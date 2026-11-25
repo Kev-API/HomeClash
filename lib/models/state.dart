@@ -219,6 +219,10 @@ abstract class MakeRealProfileState with _$MakeRealProfileState {
     String? defaultExitTarget,
     @Default(false) bool safeMode,
     @Default([]) List<MitmModuleSource> mitmModules,
+
+    /// App routes compiled ahead of every other rule, so a domain or IP rule
+    /// cannot take the app's traffic first.
+    @Default([]) List<String> appRouteLines,
   }) = _MakeRealProfileState;
 }
 
@@ -244,6 +248,7 @@ abstract class MigrationData with _$MigrationData {
     @Default([]) List<ClashProvider> clashProviders,
     @Default([]) List<CustomProxy> customProxies,
     @Default([]) List<ProxyDialer> proxyDialers,
+    @Default([]) List<AppRoute> appRoutes,
     @Default([]) List<MitmModule> mitmModules,
   }) = _MigrationData;
 }
@@ -263,6 +268,7 @@ abstract class SetupState with _$SetupState {
     @Default({}) Map<String, int> profileProviders,
     @Default([]) List<CustomProxy> appProxies,
     @Default({}) Map<int, String> proxyDialers,
+    @Default([]) List<AppRoute> appRoutes,
     @Default({}) Map<String, String> exitTargets,
     @Default([]) List<MitmModuleSource> mitmModules,
   }) = _SetupState;

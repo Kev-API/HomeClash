@@ -201,6 +201,11 @@ enum CoreEventType {
 
 enum FindProcessMode { always, strict }
 
+/// What an app route matches on. The core names a connection's owning process
+/// by package name on Android and by executable name elsewhere, so one route
+/// carries both spellings for the same app.
+enum AppMatchKind { package, process, path }
+
 enum InterfaceNameMode { clear, follow, custom }
 
 enum RestoreOption { all, onlyProfiles }

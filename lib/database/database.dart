@@ -12,6 +12,7 @@ import 'package:fl_clash/models/models.dart';
 import 'package:flutter/foundation.dart' show visibleForTesting;
 import 'package:path/path.dart' show join;
 
+part 'app_routes.dart';
 part 'clash_providers.dart';
 part 'converter.dart';
 part 'custom_proxies.dart';
@@ -37,6 +38,7 @@ part 'scripts.dart';
     ClashProviders,
     CustomProxies,
     ProxyDialers,
+    AppRoutes,
     IpQualities,
     MitmModules,
   ],
@@ -50,6 +52,7 @@ part 'scripts.dart';
     ClashProvidersDao,
     CustomProxiesDao,
     ProxyDialersDao,
+    AppRoutesDao,
     IpQualitiesDao,
     MitmModulesDao,
   ],
@@ -58,7 +61,7 @@ class Database extends _$Database {
   Database([QueryExecutor? executor]) : super(executor ?? _openConnection());
 
   @override
-  int get schemaVersion => 26;
+  int get schemaVersion => 27;
 
   static LazyDatabase _openConnection() {
     return LazyDatabase(() async {
@@ -146,6 +149,9 @@ class Database extends _$Database {
           await _addColumnIfMissing(m, mitmModules, mitmModules.asksConsent);
           await _addColumnIfMissing(m, mitmModules, mitmModules.accepted);
           await _recordMitmConsent();
+        }
+        if (from < 27) {
+          await _createTableIfMissing(m, appRoutes);
         }
       }),
       beforeOpen: (_) => customStatement('PRAGMA foreign_keys = ON'),
@@ -509,6 +515,7 @@ class Database extends _$Database {
     List<ClashProvider> clashProviders = const [],
     List<CustomProxy> customProxies = const [],
     List<ProxyDialer> proxyDialers = const [],
+    List<AppRoute> appRoutes = const [],
     List<MitmModule> mitmModules = const [],
     bool isOverride = false,
   }) async {
@@ -520,6 +527,7 @@ class Database extends _$Database {
         clashProviders.isEmpty &&
         customProxies.isEmpty &&
         proxyDialers.isEmpty &&
+        appRoutes.isEmpty &&
         mitmModules.isEmpty) {
       return;
     }
@@ -536,6 +544,7 @@ class Database extends _$Database {
           clashProvidersDao.setAllWithBatch(b, clashProviders);
           // Rewriting profiles or custom proxies cascades into these.
           proxyDialersDao.setAllWithBatch(b, proxyDialers);
+          appRoutesDao.setAllWithBatch(b, appRoutes);
           mitmModulesDao.setAllWithBatch(b, mitmModules);
           return;
         }
@@ -549,6 +558,7 @@ class Database extends _$Database {
         customProxiesDao.putAllWithBatch(b, customProxies);
         clashProvidersDao.putAllWithBatch(b, clashProviders);
         proxyDialersDao.putAllWithBatch(b, proxyDialers);
+        appRoutesDao.putAllWithBatch(b, appRoutes);
         mitmModulesDao.putAllWithBatch(b, mitmModules);
       });
       await _purgeOrphans();
@@ -577,6 +587,7 @@ class Database extends _$Database {
           t.profileId.isNotInQuery(profileIds) |
           t.proxyId.isNotInQuery(customProxyIds),
     );
+    await appRoutes.remove((t) => t.profileId.isNotInQuery(profileIds));
   }
 }
 

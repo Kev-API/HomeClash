@@ -38,6 +38,8 @@ extension CustomIssueExt on CustomIssue {
         appLocalizations.customIssueMissingDialer(name),
       DialerLoopIssue(:final proxy, :final target) =>
         appLocalizations.customIssueDialerLoop(proxy, target),
+      AppRouteTakenIssue(:final value, :final target) =>
+        appLocalizations.customIssueAppRouteTaken(value, target),
     };
   }
 

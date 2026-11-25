@@ -166,6 +166,7 @@ const mitmModuleListEquality = ListEquality<MitmModule>();
 const profileListEquality = ListEquality<Profile>();
 const proxyGroupsEquality = ListEquality<ProxyGroup>();
 const customProxiesEquality = ListEquality<CustomProxy>();
+const appRoutesEquality = ListEquality<AppRoute>();
 const clashProviderListEquality = ListEquality<ClashProvider>();
 const iconSetListEquality = ListEquality<IconSet>();
 const hotKeyActionListEquality = ListEquality<HotKeyAction>();

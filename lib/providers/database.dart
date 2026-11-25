@@ -1103,6 +1103,47 @@ class ProxyDialers extends _$ProxyDialers
 }
 
 @riverpod
+class AppRoutes extends _$AppRoutes
+    with AsyncNotifierMixin, OptimisticMixin {
+  @override
+  Stream<List<AppRoute>> build(int profileId) {
+    final query = database.appRoutesDao.queryByProfile(profileId);
+    return settled(query.watch(), () => query.get());
+  }
+
+  @override
+  bool updateShouldNotify(
+    AsyncValue<List<AppRoute>> previous,
+    AsyncValue<List<AppRoute>> next,
+  ) {
+    return !appRoutesEquality.equals(previous.value, next.value);
+  }
+
+  @override
+  List<AppRoute> get value => state.value ?? const [];
+
+  Future<void> put(AppRoute route) async {
+    final next = [
+      for (final item in value)
+        if (item.id != route.id) item,
+      route,
+    ];
+    optimistic(next, () => database.appRoutesDao.put(route));
+  }
+
+  Future<void> setEnabled(AppRoute route, bool enabled) {
+    return put(route.copyWith(enabled: enabled));
+  }
+
+  Future<void> delete(int id) {
+    optimistic(
+      value.where((item) => item.id != id).toList(),
+      () => database.appRoutesDao.deleteById(id),
+    );
+  }
+}
+
+@riverpod
 class ProfileDisabledRuleIds extends _$ProfileDisabledRuleIds
     with AsyncNotifierMixin, OptimisticMixin {
   @override

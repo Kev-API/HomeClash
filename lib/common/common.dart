@@ -1,3 +1,4 @@
+export 'app_route.dart';
 export 'app_localizations.dart';
 export 'app_ports.dart';
 export 'app_update.dart';
@@ -27,6 +28,7 @@ export 'layout.dart';
 export 'link.dart';
 export 'link_receiver.dart';
 export 'linux_elevation.dart';
+export 'loopback.dart';
 export 'log_payload.dart';
 export 'lock.dart';
 export 'mixin.dart';

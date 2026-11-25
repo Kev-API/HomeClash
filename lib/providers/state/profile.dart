@@ -125,6 +125,7 @@ Future<SetupState> setupState(Ref ref, int? profileId) async {
   Map<String, int> profileProviders = const {};
   List<CustomProxy> appProxies = [];
   Map<int, String> proxyDialers = const {};
+  List<AppRoute> appRoutes = const [];
   Script? script;
   if (profileId != null) {
     if (profileType == ProfileType.custom) {
@@ -138,6 +139,7 @@ Future<SetupState> setupState(Ref ref, int? profileId) async {
             in await database.proxyDialersDao.query(profileId).get())
           dialer.proxyId: dialer.target,
       };
+      appRoutes = await database.appRoutesDao.queryByProfile(profileId).first;
     } else {
       addedRules = await database.rulesDao.queryAddedRules(profileId).get();
       script = scriptId == null
@@ -153,6 +155,7 @@ Future<SetupState> setupState(Ref ref, int? profileId) async {
     profileProviders: profileProviders,
     appProxies: appProxies,
     proxyDialers: proxyDialers,
+    appRoutes: appRoutes,
     rules: rules,
     proxyGroups: proxyGroups,
     profileId: profileId,

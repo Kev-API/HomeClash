@@ -20,6 +20,7 @@ import 'package:fl_clash/widgets/widgets.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
+import 'app_routes.dart';
 import 'dialers.dart';
 import 'groups.dart';
 import 'providers.dart';
@@ -520,6 +521,11 @@ ProviderListenable<int> _dialerCount(int profileId) =>
           : state.dialers.keys.where(state.namedProxies.contains).length,
     );
 
+ProviderListenable<int> _appRouteCount(int profileId) =>
+    customProfileDataProvider(profileId).select(
+      (state) => state?.appRoutes.length ?? 0,
+    );
+
 String _enabledText(AppLocalizations l, bool enabled) =>
     enabled ? l.enabled : l.disabled;
 
@@ -534,11 +540,13 @@ class _MoreSectionsView extends ConsumerWidget {
     final appLocalizations = context.appLocalizations;
     final status = ref.watch(_sectionStatus(profileId));
     final dialerCount = ref.watch(_dialerCount(profileId));
-    final (:hasDialerIssues, :hasNtpIssues) = ref.watch(
+    final appRouteCount = ref.watch(_appRouteCount(profileId));
+    final (:hasDialerIssues, :hasNtpIssues, :hasAppRouteIssues) = ref.watch(
       customProfileIssuesProvider(profileId).select(
         (state) => (
           hasDialerIssues: state.dialers.isNotEmpty,
           hasNtpIssues: state.ntp.isNotEmpty,
+          hasAppRouteIssues: state.appRoutes.isNotEmpty,
         ),
       ),
     );
@@ -552,6 +560,23 @@ class _MoreSectionsView extends ConsumerWidget {
         children: [
           generateSection(
             items: [
+              _sectionRow(
+                context,
+                AppGlyphs.devices,
+                appLocalizations.appRoutes,
+                Text(
+                  appRouteCount > 0
+                      ? appLocalizations.proxiesCount(
+                          appRouteCount,
+                          appRouteCount.compact,
+                        )
+                      : appLocalizations.none,
+                  style: hasAppRouteIssues
+                      ? TextStyle(color: context.colorScheme.error)
+                      : null,
+                ),
+                CustomAppRoutesView(profileId),
+              ),
               _sectionRow(
                 context,
                 AppGlyphs.link,

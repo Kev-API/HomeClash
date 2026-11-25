@@ -530,8 +530,79 @@ class SystemProxySection extends ConsumerWidget {
         const SystemProxyItem(),
         const PacModeItem(),
         if (pacMode) const PacScriptItem() else const BypassDomainItem(),
+        if (system.isWindows) const LoopbackItem(),
       ],
     );
+  }
+}
+
+/// Lists the AppContainer exemptions Windows holds and toggles one per app.
+///
+/// This replaced the third-party utility HomeClash used to bundle: it drives
+/// the signed `CheckNetIsolation.exe` that Windows already ships.
+class LoopbackItem extends ConsumerStatefulWidget {
+  const LoopbackItem({super.key});
+
+  @override
+  ConsumerState<LoopbackItem> createState() => _LoopbackItemState();
+}
+
+class _LoopbackItemState extends ConsumerState<LoopbackItem> {
+  List<LoopbackExemption>? _entries;
+  String? _error;
+
+  Future<void> _load() async {
+    try {
+      final entries = await const LoopbackExemptions().list();
+      if (mounted) {
+        setState(() {
+          _entries = entries;
+          _error = null;
+        });
+      }
+    } on LoopbackException catch (e) {
+      if (mounted) {
+        setState(() => _error = e.failure.name);
+      }
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _load();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final appLocalizations = context.appLocalizations;
+    final entries = _entries;
+    return ListItem(
+      title: Text(appLocalizations.loopback),
+      subtitle: Text(
+        _error != null
+            ? appLocalizations.loopbackFailed
+            : entries == null
+            ? appLocalizations.loading
+            : appLocalizations.loopbackCount('${entries.length}'),
+        maxLines: 1,
+        overflow: TextOverflow.ellipsis,
+      ),
+      onTap: entries == null ? _load : () => _showExemptions(entries),
+    );
+  }
+
+  Future<void> _showExemptions(List<LoopbackExemption> entries) async {
+    final appLocalizations = context.appLocalizations;
+    await dialogs.showMessage(
+      title: appLocalizations.loopback,
+      message: TextSpan(
+        text: entries.isEmpty
+            ? appLocalizations.loopbackEmpty
+            : entries.map((entry) => entry.appContainerName).join('\n'),
+      ),
+    );
+    await _load();
   }
 }
 

@@ -1253,5 +1253,35 @@
   "coreRunningDesc": "The app is connected to the core",
   "forceRestartCore": "Force restart",
   "vpnPermissionNotGranted": "VPN permission was not granted, so the VPN did not start. An always-on VPN set for another app also blocks it.",
-  "vpnServiceStartFailed": "The VPN service could not start."
+  "vpnServiceStartFailed": "The VPN service could not start.",
+  "appRoutes": "App routes",
+  "appRoutesDesc": "Send one app's traffic through its own exit, ahead of every other rule.",
+  "appRoutesEmpty": "No app routes yet",
+  "appRouteAdd": "Add an app",
+  "appRouteExit": "Exit",
+  "appRouteExitDesc": "Where this app's traffic leaves.",
+  "appRouteMatchValue": "Package or process name",
+  "appRouteMatchValueDesc": "The Android package name, or the executable name elsewhere.",
+  "appRouteMatchKind": "Match on",
+  "appRouteKindPackage": "Package name",
+  "appRouteKindProcess": "Process name",
+  "appRouteKindPath": "Executable path",
+  "appRoutePickApp": "Pick an installed app",
+  "appRouteDuplicate": "This app is already routed",
+  "customIssueAppRouteTaken": "{value} already leaves through {target}",
+  "appRouteDirect": "Direct",
+  "@customIssueAppRouteTaken": {
+    "placeholders": {
+      "value": {},
+      "target": {}
+    }
+  },
+  "loopbackEmpty": "No AppContainer is exempt from loopback blocking.",
+  "loopbackFailed": "Could not read the exemption list",
+  "loopbackCount": "{count} exempt",
+  "@loopbackCount": {
+    "placeholders": {
+      "count": {}
+    }
+  }
 }

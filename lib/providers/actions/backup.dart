@@ -115,6 +115,7 @@ class BackupAction extends _$BackupAction {
         clashProviders: data.clashProviders,
         customProxies: data.customProxies,
         proxyDialers: data.proxyDialers,
+        appRoutes: data.appRoutes,
         mitmModules: data.mitmModules,
         isOverride: isOverride,
       );

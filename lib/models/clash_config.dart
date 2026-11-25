@@ -919,6 +919,21 @@ extension CustomProxyExt on CustomProxy {
       copyWith(definition: _withPath(definition, path, value));
 }
 
+/// One app whose traffic leaves through a chosen exit. [matchValue] is a
+/// package name on Android and an executable name or path elsewhere.
+@freezed
+abstract class AppRoute with _$AppRoute {
+  const factory AppRoute({
+    @Default(-1) int id,
+    required int profileId,
+    required AppMatchKind matchKind,
+    required String matchValue,
+    required String target,
+    @Default(true) bool enabled,
+    String? order,
+  }) = _AppRoute;
+}
+
 /// Per profile, since [target] names a proxy or group that profile defines.
 @freezed
 abstract class ProxyDialer with _$ProxyDialer {
@@ -966,6 +981,10 @@ sealed class CustomIssue with _$CustomIssue {
 
   const factory CustomIssue.missingDialer(String name) = MissingDialerIssue;
 
+  /// A later route for an app an earlier one already sends somewhere.
+  const factory CustomIssue.appRouteTaken(String value, String target) =
+      AppRouteTakenIssue;
+
   const factory CustomIssue.dialerLoop(String proxy, String target) =
       DialerLoopIssue;
 }
@@ -976,6 +995,7 @@ abstract class CustomProfileIssues with _$CustomProfileIssues {
     @Default({}) Map<int, List<CustomIssue>> proxyGroups,
     @Default({}) Map<int, List<CustomIssue>> rules,
     @Default({}) Map<int, List<CustomIssue>> dialers,
+    @Default({}) Map<int, List<CustomIssue>> appRoutes,
     @Default([]) List<CustomIssue> dns,
     @Default([]) List<CustomIssue> ntp,
   }) = _CustomProfileIssues;
@@ -990,6 +1010,7 @@ abstract class CustomProfileData with _$CustomProfileData {
     @Default({}) Set<String> ruleTargets,
     @Default({}) Set<String> proxies,
     @Default({}) Map<String, String> dialers,
+    @Default([]) List<AppRoute> appRoutes,
   }) = _CustomProfileData;
 }
 

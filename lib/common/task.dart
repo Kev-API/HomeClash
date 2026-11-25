@@ -412,6 +412,11 @@ Future<RealProfile> _makeRealProfileTask(MakeRealProfileState data) async {
   } else {
     rules = data.rules.map((item) => item.rawValue).toList();
   }
+  // An app route has to read before any domain or IP rule a profile carries,
+  // or the app's traffic leaves through whatever matched first.
+  if (data.appRouteLines.isNotEmpty) {
+    rules = [...data.appRouteLines, ...rules];
+  }
   if (data.proxyGroups.isNotEmpty) {
     rawConfig['proxy-groups'] = data.proxyGroups
         .map((item) => item.definition)

@@ -593,6 +593,7 @@ class SetupAction extends _$SetupAction {
             : lastMatchTarget(profileBase.base.matchRules),
         safeMode: ref.read(safeModeProvider),
         mitmModules: setupState.mitmModules,
+        appRouteLines: appRouteLines(setupState.appRoutes),
       ),
     );
     if (profileBase == null) {

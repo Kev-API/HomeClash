@@ -208,6 +208,7 @@ Future<MigrationData> readBackupArchive({
       database.clashProvidersDao.query().get(),
       database.customProxiesDao.query().get(),
       database.proxyDialers.readable((row) => row.toProxyDialer()).get(),
+      database.appRoutes.readable((row) => row.toAppRoute()).get(),
       database.mitmModulesDao.query().get(),
     ]);
     return MigrationData(
@@ -220,7 +221,8 @@ Future<MigrationData> readBackupArchive({
       clashProviders: results[5].cast<ClashProvider>(),
       customProxies: results[6].cast<CustomProxy>(),
       proxyDialers: results[7].cast<ProxyDialer>(),
-      mitmModules: results[8].cast<MitmModule>(),
+      appRoutes: results[8].cast<AppRoute>(),
+      mitmModules: results[9].cast<MitmModule>(),
     );
   } finally {
     await database.close();

@@ -195,6 +195,28 @@ class Dialogs {
     );
   }
 
+  Future<String?> showTextInput({
+    required String title,
+    String value = '',
+    String? labelText,
+    String Function(String value)? validate,
+  }) {
+    final appLocalizations = currentAppLocalizations;
+    return showCommonDialog<String>(
+      child: InputDialog(
+        title: title,
+        value: value,
+        labelText: labelText ?? appLocalizations.value,
+        validator: (value) {
+          if (value == null || value.trim().isEmpty) {
+            return appLocalizations.emptyTip(appLocalizations.value);
+          }
+          return validate?.call(value);
+        },
+      ),
+    );
+  }
+
   Future<String?> showPasswordInput({required String title}) {
     return showCommonDialog<String>(
       child: InputDialog(

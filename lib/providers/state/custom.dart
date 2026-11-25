@@ -37,6 +37,7 @@ CustomProfileData? customProfileData(Ref ref, int profileId) {
       .value;
   final appProxies = ref.watch(customProxiesProvider).value;
   final profileDialers = ref.watch(proxyDialersProvider(profileId)).value;
+  final profileRoutes = ref.watch(appRoutesProvider(profileId)).value;
   final ruleProvidersLoaded = ref.watch(
     clashProvidersProvider.select((state) => state.hasValue),
   );
@@ -47,6 +48,7 @@ CustomProfileData? customProfileData(Ref ref, int profileId) {
   if (groups == null ||
       appProxies == null ||
       profileDialers == null ||
+      profileRoutes == null ||
       !ruleProvidersLoaded) {
     return null;
   }
@@ -62,6 +64,7 @@ CustomProfileData? customProfileData(Ref ref, int profileId) {
     dialers: {
       for (final proxy in appProxies) proxy.name: ?profileDialers[proxy.id],
     },
+    appRoutes: profileRoutes,
   );
 }
 
@@ -741,6 +744,28 @@ List<Map<String, dynamic>> appProxiesPayload(
   return payload;
 }
 
+/// What keeps an app route from running: a target the profile cannot reach,
+/// a value the core would read as cut short, and a later route for an app that
+/// an earlier one already sends somewhere.
+List<CustomIssue> appRouteIssues(AppRoute route, CustomProfileData data) {
+  final issues = <CustomIssue>[];
+  if (!data.isRuleTarget(route.target)) {
+    issues.add(CustomIssue.missingTarget(route.target));
+  }
+  final first = data.appRoutes
+      .where(
+        (item) =>
+            item.enabled &&
+            item.matchKind == route.matchKind &&
+            item.matchValue.trim() == route.matchValue.trim(),
+      )
+      .firstOrNull;
+  if (first != null && first.id != route.id) {
+    issues.add(CustomIssue.appRouteTaken(first.matchValue, first.target));
+  }
+  return issues;
+}
+
 List<CustomIssue> proxyDialerIssues(
   CustomProxy proxy,
   String? target,
@@ -957,6 +982,11 @@ CustomProfileIssues _collectIssues(_IssueInput input) {
       input.dialed,
       (item) => item.id,
       (item) => proxyDialerIssues(item, data.dialers[item.name], data),
+    ),
+    appRoutes: collect(
+      data.appRoutes,
+      (item) => item.id,
+      (item) => appRouteIssues(item, data),
     ),
     dns: [
       if (missingDnsProxies.isNotEmpty)
