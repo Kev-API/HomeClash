@@ -1,3 +1,8 @@
+> **This is a fork.** HomeClash is a modified version of
+> [FlClash](https://github.com/chen08209/FlClash) by chen08209, modified starting 2026-11-25.
+> HomeClash is licensed under GPL-3.0 **only** — see [LICENSE](LICENSE).
+> Third-party notices are listed in [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).
+
 <div align="center">
 
 <img src="assets/images/icon.png" alt="FlClash" width="88">
@@ -85,15 +90,15 @@ clash://install-config?url=<URL-encoded subscription link>
 activity with one of these actions:
 
 ```text
-com.follow.clash.action.START
-com.follow.clash.action.STOP
-com.follow.clash.action.TOGGLE
+com.home.clash.action.START
+com.home.clash.action.STOP
+com.home.clash.action.TOGGLE
 ```
 
 From a computer, the same works over adb:
 
 ```bash
-adb shell am start -a com.follow.clash.action.TOGGLE
+adb shell am start -a com.home.clash.action.TOGGLE
 ```
 
 ## Build from source
@@ -135,4 +140,11 @@ Starring the repository is the easiest way to support the project. Questions and
 
 ## License
 
-FlClash is released under the [GPL-3.0 license](LICENSE).
+HomeClash is released under the **GPL-3.0** license, version 3 **only**.
+HomeClash does not offer use under any later version of the GPL. See
+[LICENSE](LICENSE).
+
+It is a fork of [FlClash](https://github.com/chen08209/FlClash) by chen08209,
+modified starting 2026-11-25, and keeps the upstream GPL-3.0 grant. Bundled
+third-party components carry their own licenses; see
+[THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md).

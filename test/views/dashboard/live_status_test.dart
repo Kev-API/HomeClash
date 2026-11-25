@@ -37,7 +37,7 @@ void main() {
     globalState.container = container;
     globalState.packageInfo = PackageInfo(
       appName: 'FlClash',
-      packageName: 'com.follow.clash',
+      packageName: 'com.home.clash',
       version: '0.9.3',
       buildNumber: '1',
     );

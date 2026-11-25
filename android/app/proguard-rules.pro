@@ -1,4 +1,4 @@
 
--keep class com.follow.clash.models.** { *; }
+-keep class com.home.clash.models.** { *; }
 
--keep class com.follow.clash.service.models.** { *; }
+-keep class com.home.clash.service.models.** { *; }

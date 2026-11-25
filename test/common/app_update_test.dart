@@ -17,26 +17,26 @@ void main() {
     test('names the APK built for the running ABI', () {
       expect(
         nameOn(Abi.androidArm64, windowsInstalled: false),
-        'FlClash-0.9.4-android-arm64.apk',
+        'HomeClash-0.9.4-android-arm64.apk',
       );
       expect(
         nameOn(Abi.androidArm, windowsInstalled: false),
-        'FlClash-0.9.4-android-armv7.apk',
+        'HomeClash-0.9.4-android-armv7.apk',
       );
       expect(
         nameOn(Abi.androidX64, windowsInstalled: false),
-        'FlClash-0.9.4-android-amd64.apk',
+        'HomeClash-0.9.4-android-amd64.apk',
       );
     });
 
     test('names the Windows installer only for an installed build', () {
       expect(
         nameOn(Abi.windowsX64, windowsInstalled: true),
-        'FlClash-0.9.4-windows-amd64-setup.exe',
+        'HomeClash-0.9.4-windows-amd64-setup.exe',
       );
       expect(
         nameOn(Abi.windowsArm64, windowsInstalled: true),
-        'FlClash-0.9.4-windows-arm64-setup.exe',
+        'HomeClash-0.9.4-windows-arm64-setup.exe',
       );
       expect(nameOn(Abi.windowsX64, windowsInstalled: false), isNull);
     });
@@ -61,11 +61,11 @@ void main() {
 
     expect(
       updateAssetName('v0.9.4-pre.1+2', asset),
-      'FlClash-0.9.4-pre.1.2-android-arm64.apk',
+      'HomeClash-0.9.4-pre.1.2-android-arm64.apk',
     );
     expect(
       updateChecksumsName('v0.9.4-pre.1+2'),
-      'FlClash-0.9.4-pre.1.2-SHA256SUMS',
+      'HomeClash-0.9.4-pre.1.2-SHA256SUMS',
     );
   });
 
@@ -75,10 +75,10 @@ void main() {
 
     test('reads the entry sha256sum wrote for a file', () {
       final sums =
-          '$digest  FlClash-0.9.5-android-arm64.apk\n'
-          '${'0' * 64}  FlClash-0.9.5-windows-amd64-setup.exe\n';
+          '$digest  HomeClash-0.9.5-android-arm64.apk\n'
+          '${'0' * 64}  HomeClash-0.9.5-windows-amd64-setup.exe\n';
 
-      expect(releaseChecksum(sums, 'FlClash-0.9.5-android-arm64.apk'), digest);
+      expect(releaseChecksum(sums, 'HomeClash-0.9.5-android-arm64.apk'), digest);
     });
 
     test('accepts the binary marker, upper case and CRLF', () {

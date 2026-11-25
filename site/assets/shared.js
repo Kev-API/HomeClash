@@ -1,7 +1,7 @@
-globalThis.FlClashSite = (() => {
+globalThis.HomeClashSite = (() => {
   'use strict';
 
-  const REPO = 'https://github.com/chen08209/FlClash';
+  const REPO = 'https://github.com/Kev-API/HomeClash';
   const FIRST_PAGE = 6;
   const MAX_STAGGER = 16;
   const TYPE_BY_TITLE = {
@@ -17,9 +17,9 @@ globalThis.FlClashSite = (() => {
 
   const STRINGS = {
     en: {
-      pageTitle: 'FlClash – Clash Meta (mihomo) proxy client for Android, Windows, macOS and Linux',
+      pageTitle: 'HomeClash – application-level egress policy for mihomo',
       pageDescription:
-        'FlClash is a free, open-source Clash Meta (mihomo) proxy client for Android, Windows, macOS and Linux, with rule routing, TUN mode and subscription import. No ads.',
+        'HomeClash is a free, open-source mihomo client that routes each app through its own egress — Android package names and desktop process names included. A fork of FlClash.',
       skip: 'Skip to downloads',
       navDownload: 'Download',
       navChangelog: 'Changelog',
@@ -34,8 +34,8 @@ globalThis.FlClashSite = (() => {
       heroRelease: (v) => `${v} is out · See what’s new`,
       ctaDownload: (p) => `Download for ${p}`,
       ctaChoose: 'Choose a download',
-      ctaIos: 'FlClash does not run on iOS. Pick a build for another device below.',
-      previewAlt: 'FlClash dashboard on a MacBook and a phone',
+      ctaIos: 'HomeClash does not run on iOS. Pick a build for another device below.',
+      previewAlt: 'HomeClash dashboard on a MacBook and a phone',
       fact1Title: 'mihomo core',
       fact1: 'Rule routing, proxy groups and TUN mode.',
       fact2Title: 'Subscriptions',
@@ -72,7 +72,7 @@ globalThis.FlClashSite = (() => {
       noteRpm: '.rpm package for Fedora, openSUSE and their derivatives',
       noteAppImage: 'Runs on most distributions without installing',
       tipFdroidTitle: 'F-Droid',
-      tipFdroid: 'Add the FlClash repository to your F-Droid client to get updates there.',
+      tipFdroid: 'Add the HomeClash repository to your F-Droid client to get updates there.',
       tipFdroidLink: 'Open the F-Droid repository',
       tipIntentTitle: 'Automation',
       tipIntent: 'Other apps can start, stop or toggle the proxy with these intent actions.',
@@ -106,9 +106,9 @@ globalThis.FlClashSite = (() => {
       stars: (n) => `${n} stars on GitHub`,
     },
     zh: {
-      pageTitle: 'FlClash – 基于 Clash Meta（mihomo）的多平台代理客户端，支持 Android、Windows、macOS、Linux',
+      pageTitle: 'HomeClash – 基于 mihomo 的应用级出口策略客户端',
       pageDescription:
-        'FlClash 是免费开源的 Clash Meta（mihomo）代理客户端，支持 Android、Windows、macOS 与 Linux，提供规则分流、TUN 模式与订阅导入，没有广告。',
+        'HomeClash 是免费开源的 mihomo 客户端，可按应用分配各自的出口，支持 Android 包名与桌面进程名。是 FlClash 的衍生分支。',
       skip: '跳到下载',
       navDownload: '下载',
       navChangelog: '更新日志',
@@ -123,8 +123,8 @@ globalThis.FlClashSite = (() => {
       heroRelease: (v) => `${v} 已发布 · 查看更新`,
       ctaDownload: (p) => `下载 ${p} 版`,
       ctaChoose: '选择下载版本',
-      ctaIos: 'FlClash 不支持 iOS，可以在下方选择其他设备的版本。',
-      previewAlt: 'FlClash 仪表盘在 MacBook 与手机上的界面',
+      ctaIos: 'HomeClash 不支持 iOS，可以在下方选择其他设备的版本。',
+      previewAlt: 'HomeClash 仪表盘在 MacBook 与手机上的界面',
       fact1Title: 'mihomo 内核',
       fact1: '规则分流、代理组与 TUN 模式。',
       fact2Title: '订阅导入',
@@ -161,7 +161,7 @@ globalThis.FlClashSite = (() => {
       noteRpm: '.rpm 安装包，也适用于其衍生版',
       noteAppImage: '适用于多数发行版，无需安装',
       tipFdroidTitle: 'F-Droid',
-      tipFdroid: '在 F-Droid 客户端中添加 FlClash 仓库，即可在那里接收更新。',
+      tipFdroid: '在 F-Droid 客户端中添加 HomeClash 仓库，即可在那里接收更新。',
       tipFdroidLink: '打开 F-Droid 仓库',
       tipIntentTitle: '自动化',
       tipIntent: '其他应用可以通过以下 Intent Action 启动、停止或切换代理。',

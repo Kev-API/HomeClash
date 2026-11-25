@@ -23,11 +23,11 @@ void main() {
       for (final arch in [ReleaseArch.amd64, ReleaseArch.arm64]) {
         expect(
           name(ReleaseOs.windows, arch, 'exe', form: ReleaseForm.setup),
-          'FlClash-0.9.4-windows-${arch.name}-setup.exe',
+          'HomeClash-0.9.4-windows-${arch.name}-setup.exe',
         );
         expect(
           name(ReleaseOs.windows, arch, 'zip', form: ReleaseForm.portable),
-          'FlClash-0.9.4-windows-${arch.name}-portable.zip',
+          'HomeClash-0.9.4-windows-${arch.name}-portable.zip',
         );
       }
     });
@@ -36,12 +36,12 @@ void main() {
       for (final arch in [ReleaseArch.amd64, ReleaseArch.arm64]) {
         expect(
           name(ReleaseOs.macos, arch, 'dmg'),
-          'FlClash-0.9.4-macos-${arch.name}.dmg',
+          'HomeClash-0.9.4-macos-${arch.name}.dmg',
         );
         for (final extension in ['deb', 'rpm', 'AppImage']) {
           expect(
             name(ReleaseOs.linux, arch, extension),
-            'FlClash-0.9.4-linux-${arch.name}.$extension',
+            'HomeClash-0.9.4-linux-${arch.name}.$extension',
           );
         }
       }
@@ -54,10 +54,10 @@ void main() {
             name(ReleaseOs.android, arch, 'apk'),
         ],
         [
-          'FlClash-0.9.4-android-amd64.apk',
-          'FlClash-0.9.4-android-arm64.apk',
-          'FlClash-0.9.4-android-armv7.apk',
-          'FlClash-0.9.4-android-universal.apk',
+          'HomeClash-0.9.4-android-amd64.apk',
+          'HomeClash-0.9.4-android-arm64.apk',
+          'HomeClash-0.9.4-android-armv7.apk',
+          'HomeClash-0.9.4-android-universal.apk',
         ],
       );
     });
@@ -71,14 +71,14 @@ void main() {
         version: releaseVersionOfTag(tag),
       );
 
-      expect(setup('v0.9.5'), 'FlClash-0.9.5-windows-amd64-setup.exe');
+      expect(setup('v0.9.5'), 'HomeClash-0.9.5-windows-amd64-setup.exe');
       expect(
         setup('v0.9.5-pre.1'),
-        'FlClash-0.9.5-pre.1-windows-amd64-setup.exe',
+        'HomeClash-0.9.5-pre.1-windows-amd64-setup.exe',
       );
       expect(
         setup('v0.9.5-rs.1'),
-        'FlClash-0.9.5-rs.1-windows-amd64-setup.exe',
+        'HomeClash-0.9.5-rs.1-windows-amd64-setup.exe',
       );
     });
 
@@ -92,7 +92,7 @@ void main() {
       expect(rs, '0.9.4-rs.nightly.20261106.394f5bb');
       expect(
         name(ReleaseOs.linux, ReleaseArch.amd64, 'AppImage', version: rs),
-        'FlClash-0.9.4-rs.nightly.20261106.394f5bb-linux-amd64.AppImage',
+        'HomeClash-0.9.4-rs.nightly.20261106.394f5bb-linux-amd64.AppImage',
       );
       expect(isRsReleaseVersion(dev), isFalse);
       expect(isRsReleaseVersion(rs), isTrue);
@@ -126,7 +126,7 @@ void main() {
   test('the checksum file is named by version', () {
     expect(
       releaseChecksumsName('0.9.4-pre.2'),
-      'FlClash-0.9.4-pre.2-SHA256SUMS',
+      'HomeClash-0.9.4-pre.2-SHA256SUMS',
     );
   });
 }

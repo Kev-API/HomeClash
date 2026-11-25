@@ -16,7 +16,7 @@ typedef ReleaseLookup = ({String reader, String name});
 const _desktopArches = ['amd64', 'arm64'];
 
 List<String> siteAssetNames(String script, String version) {
-  const naming = r'`FlClash-${release.version}-${id}`';
+  const naming = r'`HomeClash-${release.version}-${id}`';
   if (!script.contains(naming)) {
     throw const PackageError(
       '$siteScript no longer builds names as $naming; '
@@ -36,7 +36,7 @@ List<String> siteAssetNames(String script, String version) {
   return [
     for (final id in ids)
       for (final expanded in _expandArch(id, r'${goArch(arch)}'))
-        'FlClash-$version-$expanded',
+        'HomeClash-$version-$expanded',
   ];
 }
 

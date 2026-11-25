@@ -186,25 +186,25 @@ hooks:
 
     expect(
       names(ReleaseOs.windows, ['exe', 'zip'], arch: ReleaseArch.arm64),
-      'FlClash-0.9.4-pre.2-windows-arm64-setup.exe '
-      'FlClash-0.9.4-pre.2-windows-arm64-portable.zip',
+      'HomeClash-0.9.4-pre.2-windows-arm64-setup.exe '
+      'HomeClash-0.9.4-pre.2-windows-arm64-portable.zip',
     );
     expect(
       names(ReleaseOs.linux, ['deb', 'rpm', 'appimage']),
-      'FlClash-0.9.4-pre.2-linux-amd64.deb '
-      'FlClash-0.9.4-pre.2-linux-amd64.rpm '
-      'FlClash-0.9.4-pre.2-linux-amd64.AppImage',
+      'HomeClash-0.9.4-pre.2-linux-amd64.deb '
+      'HomeClash-0.9.4-pre.2-linux-amd64.rpm '
+      'HomeClash-0.9.4-pre.2-linux-amd64.AppImage',
     );
     expect(
       names(ReleaseOs.macos, ['dmg'], arch: ReleaseArch.arm64),
-      'FlClash-0.9.4-pre.2-macos-arm64.dmg',
+      'HomeClash-0.9.4-pre.2-macos-arm64.dmg',
     );
     expect(
       names(ReleaseOs.android, ['apk']),
-      'FlClash-0.9.4-pre.2-android-arm64.apk '
-      'FlClash-0.9.4-pre.2-android-armv7.apk '
-      'FlClash-0.9.4-pre.2-android-amd64.apk '
-      'FlClash-0.9.4-pre.2-android-universal.apk',
+      'HomeClash-0.9.4-pre.2-android-arm64.apk '
+      'HomeClash-0.9.4-pre.2-android-armv7.apk '
+      'HomeClash-0.9.4-pre.2-android-amd64.apk '
+      'HomeClash-0.9.4-pre.2-android-universal.apk',
     );
     expect(() => names(ReleaseOs.macos, ['deb']), throwsA(isA<PackageError>()));
   });
@@ -379,7 +379,7 @@ hooks:
       );
       final checksums = writeManifest(dir, [entry]);
 
-      expect(checksums, 'FlClash-0.9.4-SHA256SUMS');
+      expect(checksums, 'HomeClash-0.9.4-SHA256SUMS');
       expect(
         File(p.join(dir, checksums)).readAsStringSync(),
         '${sha256.convert(utf8.encode(entry.name))}  ${entry.name}\n',
@@ -390,7 +390,7 @@ hooks:
       expect(json['checksums'], checksums);
       expect(json['artifacts'], [
         {
-          'name': 'FlClash-0.9.4-linux-amd64.deb',
+          'name': 'HomeClash-0.9.4-linux-amd64.deb',
           'sha256': entry.sha256,
           'size': entry.name.length,
           'line': 'rs',
@@ -418,17 +418,17 @@ hooks:
       final checksums = await mergeManifests([linux, macos], out);
 
       expect(readManifest(out).map((entry) => entry.name), [
-        'FlClash-0.9.4-linux-amd64.deb',
-        'FlClash-0.9.4-macos-arm64.dmg',
+        'HomeClash-0.9.4-linux-amd64.deb',
+        'HomeClash-0.9.4-macos-arm64.dmg',
       ]);
       expect(
         File(
           p.join(out, checksums),
         ).readAsLinesSync().map((l) => l.split('  ').last),
-        ['FlClash-0.9.4-linux-amd64.deb', 'FlClash-0.9.4-macos-arm64.dmg'],
+        ['HomeClash-0.9.4-linux-amd64.deb', 'HomeClash-0.9.4-macos-arm64.dmg'],
       );
       expect(
-        File(p.join(out, 'FlClash-0.9.4-macos-arm64.dmg')).existsSync(),
+        File(p.join(out, 'HomeClash-0.9.4-macos-arm64.dmg')).existsSync(),
         isTrue,
       );
     });

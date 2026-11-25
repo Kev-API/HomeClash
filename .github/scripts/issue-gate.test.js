@@ -5,7 +5,7 @@ const gate = require('./issue-gate.js');
 
 const root = path.join(__dirname, '..', '..');
 const forms = gate.loadForms(root);
-const repo = { owner: 'chen08209', repo: 'FlClash' };
+const repo = { owner: 'Kev-API', repo: 'HomeClash' };
 const github = {
   rest: {
     repos: {
@@ -101,7 +101,7 @@ function context(payloadIssue) {
         created_at: '2026-11-21T00:00:00Z',
         ...payloadIssue,
       },
-      repository: { html_url: 'https://github.com/chen08209/FlClash' },
+      repository: { html_url: 'https://github.com/Kev-API/HomeClash' },
     },
   };
 }

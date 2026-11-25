@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:fl_clash/common/common.dart';
 import 'package:fl_clash/common/mitm_network.dart';
 import 'package:fl_clash/enum/enum.dart';
@@ -12,7 +10,6 @@ import 'package:fl_clash/views/config/tun.dart';
 import 'package:fl_clash/widgets/widgets.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:path/path.dart' show dirname, join;
 
 typedef _VpnUpdate<T> = VpnProps Function(VpnProps state, T value);
 
@@ -304,23 +301,6 @@ class PacScriptItem extends ConsumerWidget {
   }
 }
 
-class LoopbackItem extends StatelessWidget {
-  const LoopbackItem({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return ListItem(
-      title: Text(context.appLocalizations.loopback),
-      onTap: () {
-        windows?.runas(
-          '"${join(dirname(Platform.resolvedExecutable), "EnableLoopback.exe")}"',
-          '',
-        );
-      },
-    );
-  }
-}
-
 const _maxUint32 = 0xFFFFFFFF;
 
 class _NumberItem extends ConsumerWidget {
@@ -550,7 +530,6 @@ class SystemProxySection extends ConsumerWidget {
         const SystemProxyItem(),
         const PacModeItem(),
         if (pacMode) const PacScriptItem() else const BypassDomainItem(),
-        if (system.isWindows) const LoopbackItem(),
       ],
     );
   }

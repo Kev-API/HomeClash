@@ -7,7 +7,7 @@ The Go proxy core in `core/` operates in two modes.
 Android lib mode:
 
 - `gomobile bind` builds `core/mobile` into an AAR: a native library per ABI, shipped as `libclash.so`, and the Java
-  classes gobind generates in `com.follow.clash.core.mobile`. The `:core` Gradle module builds it and takes in its
+  classes gobind generates in `com.home.clash.core.mobile`. The `:core` Gradle module builds it and takes in its
   classes and libraries (see Android Core Build).
 - The Android `:core` module owns the binding: `Core.kt` is the only caller of the generated `Mobile` class. Flutter
   crosses MethodChannels through `lib/plugins/service.dart` and Android's `ServicePlugin` rather than calling the Core
@@ -1830,7 +1830,7 @@ NDK version stands in for the hook's cache.
   finds what it rewrites, the constant exactly once. Go writes no `DT_SONAME` into a c-shared library, so the ELF
   needs no change.
 - The AAR's own `proguard.txt` goes with the rest of it. `android/core/consumer-rules.pro` keeps `go.**` and
-  `com.follow.clash.core.mobile.**`, the classes gobind's C glue looks up by name.
+  `com.home.clash.core.mobile.**`, the classes gobind's C glue looks up by name.
 - The CI `android` job compiles `:core` without Flutter, so it passes `-Ptarget-platform=android-arm64` to build one ABI.
 
 ## Local Plugins

@@ -1,5 +1,5 @@
 name: fl_clash
-description: A multi-platform proxy client based on ClashMeta, simple and easy to use, open-source and ad-free.
+description: Application-level egress policy for mihomo. A fork of FlClash.
 publish_to: 'none'
 version: 0.9.4+2026110401
 environment:

@@ -65,22 +65,22 @@ Future<void> _writeRelease(String directory) async {
 void main() {
   test('reads the names the site asks for from its script', () {
     expect(siteAssetNames(_read(siteScript), _version), [
-      'FlClash-0.9.5-android-arm64.apk',
-      'FlClash-0.9.5-android-armv7.apk',
-      'FlClash-0.9.5-android-amd64.apk',
-      'FlClash-0.9.5-windows-amd64-setup.exe',
-      'FlClash-0.9.5-windows-arm64-setup.exe',
-      'FlClash-0.9.5-windows-amd64-portable.zip',
-      'FlClash-0.9.5-windows-arm64-portable.zip',
-      'FlClash-0.9.5-macos-arm64.dmg',
-      'FlClash-0.9.5-macos-amd64.dmg',
-      'FlClash-0.9.5-linux-amd64.deb',
-      'FlClash-0.9.5-linux-arm64.deb',
-      'FlClash-0.9.5-linux-amd64.rpm',
-      'FlClash-0.9.5-linux-arm64.rpm',
-      'FlClash-0.9.5-linux-amd64.AppImage',
-      'FlClash-0.9.5-linux-arm64.AppImage',
-      'FlClash-0.9.5-SHA256SUMS',
+      'HomeClash-0.9.5-android-arm64.apk',
+      'HomeClash-0.9.5-android-armv7.apk',
+      'HomeClash-0.9.5-android-amd64.apk',
+      'HomeClash-0.9.5-windows-amd64-setup.exe',
+      'HomeClash-0.9.5-windows-arm64-setup.exe',
+      'HomeClash-0.9.5-windows-amd64-portable.zip',
+      'HomeClash-0.9.5-windows-arm64-portable.zip',
+      'HomeClash-0.9.5-macos-arm64.dmg',
+      'HomeClash-0.9.5-macos-amd64.dmg',
+      'HomeClash-0.9.5-linux-amd64.deb',
+      'HomeClash-0.9.5-linux-arm64.deb',
+      'HomeClash-0.9.5-linux-amd64.rpm',
+      'HomeClash-0.9.5-linux-arm64.rpm',
+      'HomeClash-0.9.5-linux-amd64.AppImage',
+      'HomeClash-0.9.5-linux-arm64.AppImage',
+      'HomeClash-0.9.5-SHA256SUMS',
     ]);
   });
 
@@ -92,19 +92,19 @@ void main() {
     expect(
       names,
       containsAll([
-        'FlClash-0.9.5-windows-arm64-setup.exe',
-        'FlClash-0.9.5-windows-arm64-portable.zip',
-        'FlClash-0.9.5-linux-arm64.AppImage',
-        'FlClash-0.9.5-linux-arm64.deb',
-        'FlClash-0.9.5-linux-arm64.rpm',
+        'HomeClash-0.9.5-windows-arm64-setup.exe',
+        'HomeClash-0.9.5-windows-arm64-portable.zip',
+        'HomeClash-0.9.5-linux-arm64.AppImage',
+        'HomeClash-0.9.5-linux-arm64.deb',
+        'HomeClash-0.9.5-linux-arm64.rpm',
       ]),
     );
   });
 
   test('reads both disk images of the Homebrew cask', () {
     expect(homebrewAssetNames(_read(homebrewCaskTemplate), _version), [
-      'FlClash-0.9.5-macos-arm64.dmg',
-      'FlClash-0.9.5-macos-amd64.dmg',
+      'HomeClash-0.9.5-macos-arm64.dmg',
+      'HomeClash-0.9.5-macos-amd64.dmg',
     ]);
   });
 
@@ -112,11 +112,11 @@ void main() {
     expect(
       updaterAssetNames(_version),
       unorderedEquals([
-        'FlClash-0.9.5-android-arm64.apk',
-        'FlClash-0.9.5-android-armv7.apk',
-        'FlClash-0.9.5-android-amd64.apk',
-        'FlClash-0.9.5-windows-amd64-setup.exe',
-        'FlClash-0.9.5-windows-arm64-setup.exe',
+        'HomeClash-0.9.5-android-arm64.apk',
+        'HomeClash-0.9.5-android-armv7.apk',
+        'HomeClash-0.9.5-android-amd64.apk',
+        'HomeClash-0.9.5-windows-amd64-setup.exe',
+        'HomeClash-0.9.5-windows-arm64-setup.exe',
       ]),
     );
   });
@@ -131,7 +131,7 @@ void main() {
     );
     expect(
       () => homebrewAssetNames(
-        _read(homebrewCaskTemplate).replaceFirst('FlClash-', 'FlClash-LINE-'),
+        _read(homebrewCaskTemplate).replaceFirst('HomeClash-', 'HomeClash-LINE-'),
         _version,
       ),
       throwsA(isA<PackageError>()),
@@ -153,10 +153,10 @@ void main() {
     test('names each reader of a missing file', () async {
       await _writeRelease(temp.path);
       File(
-        p.join(temp.path, 'FlClash-0.9.5-windows-arm64-setup.exe'),
+        p.join(temp.path, 'HomeClash-0.9.5-windows-arm64-setup.exe'),
       ).deleteSync();
 
-      const missing = 'FlClash-0.9.5-windows-arm64-setup.exe, which is missing';
+      const missing = 'HomeClash-0.9.5-windows-arm64-setup.exe, which is missing';
       expect(releaseContractFailures(Directory.current.path, temp.path), [
         '$siteScript looks for $missing',
         '$releaseNotesTemplate looks for $missing',
@@ -166,7 +166,7 @@ void main() {
 
     test('catches a checksum file that misstates an installer', () async {
       await _writeRelease(temp.path);
-      final sums = File(p.join(temp.path, 'FlClash-0.9.5-SHA256SUMS'));
+      final sums = File(p.join(temp.path, 'HomeClash-0.9.5-SHA256SUMS'));
       sums.writeAsStringSync(
         sums
             .readAsLinesSync()
@@ -180,7 +180,7 @@ void main() {
 
       const failure =
           'in-app updater finds no matching sha256 for '
-          'FlClash-0.9.5-android-arm64.apk in FlClash-0.9.5-SHA256SUMS';
+          'HomeClash-0.9.5-android-arm64.apk in HomeClash-0.9.5-SHA256SUMS';
       expect(releaseContractFailures(Directory.current.path, temp.path), [
         failure,
       ]);

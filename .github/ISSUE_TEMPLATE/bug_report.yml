@@ -1,5 +1,5 @@
 name: 问题反馈 / Bug report
-description: FlClash 出错、闪退或不能正常代理 / FlClash fails, crashes or does not proxy as it should
+description: HomeClash 出错、闪退或不能正常代理 / HomeClash fails, crashes or does not proxy as it should
 title: "[BUG] "
 labels: [bug]
 body:
@@ -8,7 +8,7 @@ body:
       value: |
         这些不在本仓库处理 / Not handled here:
         - 使用方法、机场或节点的问题，请到 Telegram 群交流 / Usage, subscription-provider and node problems: ask in the Telegram group.
-        - 手机系统或安全软件拦截安装、报毒、停掉 VPN，FlClash 无法改变 / A phone's system or security app blocking the install, flagging it or stopping the VPN is outside FlClash's control.
+        - 手机系统或安全软件拦截安装、报毒、停掉 VPN，HomeClash 无法改变 / A phone's system or security app blocking the install, flagging it or stopping the VPN is outside HomeClash's control.
 
         缺项的 issue 会被标记 `needs-info`，7 天内未补全会被关闭。/ An incomplete issue is labelled `needs-info` and closed after 7 days.
   - type: input
@@ -32,8 +32,8 @@ body:
     attributes:
       label: 安装包 / Package
       description: >-
-        从 Releases 下载的文件名里有架构，如 `FlClash-0.9.4-windows-amd64-setup.exe`。/
-        The file name from Releases carries the architecture, such as `FlClash-0.9.4-windows-amd64-setup.exe`.
+        从 Releases 下载的文件名里有架构，如 `HomeClash-0.9.4-windows-amd64-setup.exe`。/
+        The file name from Releases carries the architecture, such as `HomeClash-0.9.4-windows-amd64-setup.exe`.
       options:
         - Android APK arm64
         - Android APK armv7
@@ -112,7 +112,7 @@ body:
     id: steps
     attributes:
       label: 复现步骤 / Steps to reproduce
-      description: 从打开 FlClash 开始，按顺序写每一步点了哪里。/ From opening FlClash, each step in order and what you tapped or clicked.
+      description: 从打开 HomeClash 开始，按顺序写每一步点了哪里。/ From opening HomeClash, each step in order and what you tapped or clicked.
       placeholder: |
         1. 在“配置”页导入订阅 / Import a subscription on the Profiles page
         2. 在仪表盘打开“虚拟网卡” / Turn on TUN in the Dashboard

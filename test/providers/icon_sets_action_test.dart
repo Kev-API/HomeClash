@@ -35,7 +35,7 @@ void main() {
     loadAppLocalizations(const Locale('en'));
     globalState.packageInfo = PackageInfo(
       appName: 'FlClash',
-      packageName: 'com.follow.clash',
+      packageName: 'com.home.clash',
       version: '1.0.0',
       buildNumber: '1',
     );

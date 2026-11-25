@@ -8,7 +8,7 @@ import 'src/changelog/models.dart';
 import 'src/changelog/render.dart';
 import 'src/changelog/verify.dart';
 
-const _repository = 'chen08209/FlClash';
+const _repository = 'Kev-API/HomeClash';
 
 Future<void> main(List<String> arguments) async {
   final parser = ArgParser()

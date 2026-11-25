@@ -1,3 +1,8 @@
+> **本仓库是一个衍生分支。** HomeClash 是 chen08209 的
+> [FlClash](https://github.com/chen08209/FlClash) 的修改版本，自 2026-11-25 起修改。
+> HomeClash 仅以 GPL-3.0 协议发布 —— 见 [LICENSE](LICENSE)。
+> 第三方声明见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。
+
 <div align="center">
 
 <img src="assets/images/icon.png" alt="FlClash" width="88">
@@ -79,15 +84,15 @@ clash://install-config?url=<经过 URL 编码的订阅链接>
 **Android 自动化。** Tasker、MacroDroid 等应用可以用下面的 Action 启动 Activity，从而启动、停止或切换代理：
 
 ```text
-com.follow.clash.action.START
-com.follow.clash.action.STOP
-com.follow.clash.action.TOGGLE
+com.home.clash.action.START
+com.home.clash.action.STOP
+com.home.clash.action.TOGGLE
 ```
 
 在电脑上也可以通过 adb 触发：
 
 ```bash
-adb shell am start -a com.follow.clash.action.TOGGLE
+adb shell am start -a com.home.clash.action.TOGGLE
 ```
 
 ## 从源码构建
@@ -127,4 +132,8 @@ Bug 与功能建议请提交到 [GitHub Issues](https://github.com/chen08209/FlC
 
 ## 许可证
 
-FlClash 以 [GPL-3.0 协议](LICENSE)发布。
+HomeClash 仅以 **GPL-3.0** 协议第 3 版发布（**不含**"或任何更高版本"）。见 [LICENSE](LICENSE)。
+
+本项目是 chen08209 的 [FlClash](https://github.com/chen08209/FlClash) 的衍生分支，
+自 2026-11-25 起修改，并沿用上游的 GPL-3.0 授权。所捆绑的第三方组件分别遵循其
+各自的协议，见 [THIRD-PARTY-NOTICES.md](THIRD-PARTY-NOTICES.md)。

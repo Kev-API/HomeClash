@@ -1,6 +1,6 @@
-package com.follow.clash.service.models
+package com.home.clash.service.models
 
-import com.follow.clash.common.AccessControlMode
+import com.home.clash.common.AccessControlMode
 import com.google.gson.JsonParser
 import java.net.Inet4Address
 import java.net.Inet6Address

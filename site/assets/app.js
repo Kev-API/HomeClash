@@ -5,7 +5,7 @@
   const PLATFORM_NAMES = { android: 'Android', windows: 'Windows', macos: 'macOS', linux: 'Linux' };
   const PAGE = 15;
   const { REPO, FIRST_PAGE, parseChangelog, translate, formatDate, changelogMeta, timelineHtml } =
-    globalThis.FlClashSite;
+    globalThis.HomeClashSite;
   const SITE = new URL('..', document.currentScript.src);
 
   const root = document.documentElement;
@@ -131,7 +131,7 @@
 
   // tool/package.dart check parses these names from this file to hold each release to them.
   function assetName(release, id) {
-    return `FlClash-${release.version}-${id}`;
+    return `HomeClash-${release.version}-${id}`;
   }
 
   function assetHref(release, name) {
@@ -433,7 +433,7 @@
             'tipIntentTitle',
             'tipIntent',
             commandBlock(
-              ['com.follow.clash.action.START', 'com.follow.clash.action.STOP', 'com.follow.clash.action.TOGGLE'].join(
+              ['com.home.clash.action.START', 'com.home.clash.action.STOP', 'com.home.clash.action.TOGGLE'].join(
                 '\n',
               ),
             ),
@@ -924,7 +924,7 @@
   }
 
   function wireField() {
-    field = globalThis.FlClashField?.mount($('#field'), {
+    field = globalThis.HomeClashField?.mount($('#field'), {
       avoid: () => [
         taglineBox(),
         ...[...document.querySelectorAll('#hero-release, #wordmark, .lede, .cta, #cta-note, #facts')]
