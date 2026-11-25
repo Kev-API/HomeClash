@@ -4007,4 +4007,69 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get vpnServiceStartFailed => 'Le service VPN n\'a pas pu démarrer.';
+
+  @override
+  String get appRoutes => 'Routage des applications';
+
+  @override
+  String get appRoutesDesc =>
+      'Fait sortir le trafic d’une application par sa propre sortie, avant toute autre règle.';
+
+  @override
+  String get appRoutesEmpty => 'Aucun routage d’application';
+
+  @override
+  String get appRouteAdd => 'Ajouter une application';
+
+  @override
+  String get appRouteExit => 'Sortie';
+
+  @override
+  String get appRouteExitDesc =>
+      'La sortie empruntée par le trafic de cette application.';
+
+  @override
+  String get appRouteMatchValue => 'Paquet ou nom du processus';
+
+  @override
+  String get appRouteMatchValueDesc =>
+      'Le nom du paquet Android, ou le nom de l’exécutable sur les autres systèmes.';
+
+  @override
+  String get appRouteMatchKind => 'Correspondance sur';
+
+  @override
+  String get appRouteKindPackage => 'Nom du paquet';
+
+  @override
+  String get appRouteKindProcess => 'Nom du processus';
+
+  @override
+  String get appRouteKindPath => 'Chemin de l’exécutable';
+
+  @override
+  String get appRoutePickApp => 'Choisir une application installée';
+
+  @override
+  String get appRouteDuplicate => 'Cette application est déjà routée';
+
+  @override
+  String customIssueAppRouteTaken(Object value, Object target) {
+    return '$value sort déjà par $target';
+  }
+
+  @override
+  String get appRouteDirect => 'Direct';
+
+  @override
+  String get loopbackEmpty =>
+      'Aucun AppContainer n’est exempté du blocage de bouclage.';
+
+  @override
+  String get loopbackFailed => 'Impossible de lire la liste des exemptions';
+
+  @override
+  String loopbackCount(Object count) {
+    return '$count exemptés';
+  }
 }

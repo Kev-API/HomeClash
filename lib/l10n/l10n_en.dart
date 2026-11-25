@@ -3960,4 +3960,68 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get vpnServiceStartFailed => 'The VPN service could not start.';
+
+  @override
+  String get appRoutes => 'App routes';
+
+  @override
+  String get appRoutesDesc =>
+      'Send one app\'s traffic through its own exit, ahead of every other rule.';
+
+  @override
+  String get appRoutesEmpty => 'No app routes yet';
+
+  @override
+  String get appRouteAdd => 'Add an app';
+
+  @override
+  String get appRouteExit => 'Exit';
+
+  @override
+  String get appRouteExitDesc => 'Where this app\'s traffic leaves.';
+
+  @override
+  String get appRouteMatchValue => 'Package or process name';
+
+  @override
+  String get appRouteMatchValueDesc =>
+      'The Android package name, or the executable name elsewhere.';
+
+  @override
+  String get appRouteMatchKind => 'Match on';
+
+  @override
+  String get appRouteKindPackage => 'Package name';
+
+  @override
+  String get appRouteKindProcess => 'Process name';
+
+  @override
+  String get appRouteKindPath => 'Executable path';
+
+  @override
+  String get appRoutePickApp => 'Pick an installed app';
+
+  @override
+  String get appRouteDuplicate => 'This app is already routed';
+
+  @override
+  String customIssueAppRouteTaken(Object value, Object target) {
+    return '$value already leaves through $target';
+  }
+
+  @override
+  String get appRouteDirect => 'Direct';
+
+  @override
+  String get loopbackEmpty =>
+      'No AppContainer is exempt from loopback blocking.';
+
+  @override
+  String get loopbackFailed => 'Could not read the exemption list';
+
+  @override
+  String loopbackCount(Object count) {
+    return '$count exempt';
+  }
 }

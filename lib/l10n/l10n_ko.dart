@@ -3855,4 +3855,65 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get vpnServiceStartFailed => 'VPN 서비스를 시작하지 못했습니다.';
+
+  @override
+  String get appRoutes => '앱 경로';
+
+  @override
+  String get appRoutesDesc => '한 앱의 트래픽을 다른 모든 규칙보다 먼저 전용 출구로 보냅니다.';
+
+  @override
+  String get appRoutesEmpty => '아직 앱 경로가 없습니다';
+
+  @override
+  String get appRouteAdd => '앱 추가';
+
+  @override
+  String get appRouteExit => '출구';
+
+  @override
+  String get appRouteExitDesc => '이 앱의 트래픽이 나가는 위치입니다.';
+
+  @override
+  String get appRouteMatchValue => '패키지 또는 프로세스 이름';
+
+  @override
+  String get appRouteMatchValueDesc => 'Android 패키지 이름 또는 다른 플랫폼의 실행 파일 이름입니다.';
+
+  @override
+  String get appRouteMatchKind => '일치 기준';
+
+  @override
+  String get appRouteKindPackage => '패키지 이름';
+
+  @override
+  String get appRouteKindProcess => '프로세스 이름';
+
+  @override
+  String get appRouteKindPath => '실행 파일 경로';
+
+  @override
+  String get appRoutePickApp => '설치된 앱 선택';
+
+  @override
+  String get appRouteDuplicate => '이 앱은 이미 경로가 설정되어 있습니다';
+
+  @override
+  String customIssueAppRouteTaken(Object value, Object target) {
+    return '$value은(는) 이미 $target(으)로 나갑니다';
+  }
+
+  @override
+  String get appRouteDirect => '직접 연결';
+
+  @override
+  String get loopbackEmpty => '루프백 차단에서 제외된 AppContainer가 없습니다.';
+
+  @override
+  String get loopbackFailed => '제외 목록을 읽지 못했습니다';
+
+  @override
+  String loopbackCount(Object count) {
+    return '$count개 제외';
+  }
 }

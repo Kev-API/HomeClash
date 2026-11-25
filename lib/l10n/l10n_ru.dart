@@ -3954,4 +3954,69 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get vpnServiceStartFailed => 'Не удалось запустить службу VPN.';
+
+  @override
+  String get appRoutes => 'Маршруты приложений';
+
+  @override
+  String get appRoutesDesc =>
+      'Направляет трафик одного приложения через отдельный выход раньше всех остальных правил.';
+
+  @override
+  String get appRoutesEmpty => 'Маршрутов приложений пока нет';
+
+  @override
+  String get appRouteAdd => 'Добавить приложение';
+
+  @override
+  String get appRouteExit => 'Выход';
+
+  @override
+  String get appRouteExitDesc =>
+      'Через какой выход направляется трафик этого приложения.';
+
+  @override
+  String get appRouteMatchValue => 'Пакет или имя процесса';
+
+  @override
+  String get appRouteMatchValueDesc =>
+      'Имя пакета Android или имя исполняемого файла на других платформах.';
+
+  @override
+  String get appRouteMatchKind => 'Сопоставлять по';
+
+  @override
+  String get appRouteKindPackage => 'Имя пакета';
+
+  @override
+  String get appRouteKindProcess => 'Имя процесса';
+
+  @override
+  String get appRouteKindPath => 'Путь к исполняемому файлу';
+
+  @override
+  String get appRoutePickApp => 'Выбрать установленное приложение';
+
+  @override
+  String get appRouteDuplicate => 'Для этого приложения маршрут уже задан';
+
+  @override
+  String customIssueAppRouteTaken(Object value, Object target) {
+    return '$value уже выходит через $target';
+  }
+
+  @override
+  String get appRouteDirect => 'Напрямую';
+
+  @override
+  String get loopbackEmpty =>
+      'Ни один AppContainer не освобождён от блокировки loopback.';
+
+  @override
+  String get loopbackFailed => 'Не удалось прочитать список исключений';
+
+  @override
+  String loopbackCount(Object count) {
+    return 'Исключений: $count';
+  }
 }

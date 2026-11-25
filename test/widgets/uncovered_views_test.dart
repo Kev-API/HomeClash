@@ -136,7 +136,7 @@ void main() {
     // AboutView reads globalState.packageInfo, which only the real app bootstrap
     // populates.
     globalState.packageInfo = PackageInfo(
-      appName: 'FlClash',
+      appName: 'HomeClash',
       packageName: 'com.home.clash',
       version: '0.0.0',
       buildNumber: '1',
@@ -254,7 +254,7 @@ void main() {
     await tester.pump();
 
     expect(find.byType(AboutView), findsOneWidget);
-    expect(find.text('Telegram'), findsOneWidget);
+    expect(find.text('github.com/Kev-API/HomeClash'), findsWidgets);
     final hero = find.byWidgetPredicate(
       (widget) => widget.runtimeType.toString() == '_AboutHero',
     );

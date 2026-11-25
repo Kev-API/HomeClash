@@ -3513,7 +3513,8 @@ class AppLocalizationsJa extends AppLocalizations {
   String get mitmSkipFinalRule => 'モジュールのルールは先頭に入るため、最終ルールは以降のすべてのルールを隠してしまいます';
 
   @override
-  String get mitmSkipDeviceRule => 'このルールには HomeClash が読み取れないデバイスやネットワークの情報が必要です';
+  String get mitmSkipDeviceRule =>
+      'このルールには HomeClash が読み取れないデバイスやネットワークの情報が必要です';
 
   @override
   String get mitmSkipRequirement => 'この行の使用条件をこのデバイスは満たしていません';
@@ -3780,4 +3781,65 @@ class AppLocalizationsJa extends AppLocalizations {
 
   @override
   String get vpnServiceStartFailed => 'VPN サービスを起動できませんでした。';
+
+  @override
+  String get appRoutes => 'アプリルート';
+
+  @override
+  String get appRoutesDesc => '1 つのアプリの通信を、ほかのすべてのルールより先に専用の出口へ送ります。';
+
+  @override
+  String get appRoutesEmpty => 'アプリルートはまだありません';
+
+  @override
+  String get appRouteAdd => 'アプリを追加';
+
+  @override
+  String get appRouteExit => '出口';
+
+  @override
+  String get appRouteExitDesc => 'このアプリの通信が出ていく場所です。';
+
+  @override
+  String get appRouteMatchValue => 'パッケージ名またはプロセス名';
+
+  @override
+  String get appRouteMatchValueDesc => 'Android ではパッケージ名、それ以外では実行ファイル名です。';
+
+  @override
+  String get appRouteMatchKind => '照合対象';
+
+  @override
+  String get appRouteKindPackage => 'パッケージ名';
+
+  @override
+  String get appRouteKindProcess => 'プロセス名';
+
+  @override
+  String get appRouteKindPath => '実行ファイルのパス';
+
+  @override
+  String get appRoutePickApp => 'インストール済みアプリを選択';
+
+  @override
+  String get appRouteDuplicate => 'このアプリはすでにルーティングされています';
+
+  @override
+  String customIssueAppRouteTaken(Object value, Object target) {
+    return '$value はすでに $target から出ています';
+  }
+
+  @override
+  String get appRouteDirect => '直接';
+
+  @override
+  String get loopbackEmpty => 'ループバックのブロックを免除された AppContainer はありません。';
+
+  @override
+  String get loopbackFailed => '免除リストを読み取れませんでした';
+
+  @override
+  String loopbackCount(Object count) {
+    return '$count 件を免除';
+  }
 }

@@ -34,7 +34,9 @@ class CustomAppRoutesView extends ConsumerWidget {
                     const <CustomProxy>[])
               if (named.contains(item.name)) item.name: item.type,
           };
-          final groupTypes = {for (final group in groups) group.name: group.type.name};
+          final groupTypes = {
+            for (final group in groups) group.name: group.type.name,
+          };
           return SelectionSheet<String>(
             title: appLocalizations.appRouteExit,
             sections: [
@@ -118,6 +120,9 @@ class CustomAppRoutesView extends ConsumerWidget {
     if (preset == null) {
       return;
     }
+    if (!context.mounted) {
+      return;
+    }
     final exit = await _pickExit(context, ref);
     if (exit == null) {
       return;
@@ -144,16 +149,20 @@ class CustomAppRoutesView extends ConsumerWidget {
         sections: const [
           SelectionSection(
             items: appRoutePresets,
+            subtitleBuilder: _appRoutePresetSubtitle,
           ),
         ],
         labelBuilder: (item) => item.label,
-        subtitleBuilder: (_, item) =>
-            [...item.packageNames, ...item.processNames].join(', '),
         selectedOf: (_) => null,
         onSelected: (item) => Navigator.of(context).pop(item),
       ),
     );
   }
+
+  static String _appRoutePresetSubtitle(
+    BuildContext context,
+    AppRoutePreset item,
+  ) => [...item.packageNames, ...item.processNames].join(', ');
 
   Future<String?> _pickExit(BuildContext context, WidgetRef ref) {
     final appLocalizations = context.appLocalizations;

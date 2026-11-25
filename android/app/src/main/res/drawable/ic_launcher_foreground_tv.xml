@@ -7,8 +7,8 @@
         android:viewportHeight="240">
     <group android:scaleX="0.66"
            android:scaleY="0.66"
-           android:translateX="40.8"
-           android:translateY="40.8">
+           android:translateX="43.11"
+           android:translateY="40.965">
         <path
                 android:pathData="M64.59,126.88L157.53,73.22L175.41,21.60L82.47,75.26z">
             <aapt:attr name="android:fillColor">

@@ -139,7 +139,7 @@ Future<SetupState> setupState(Ref ref, int? profileId) async {
             in await database.proxyDialersDao.query(profileId).get())
           dialer.proxyId: dialer.target,
       };
-      appRoutes = await database.appRoutesDao.queryByProfile(profileId).first;
+      appRoutes = await database.appRoutesDao.queryByProfile(profileId).get();
     } else {
       addedRules = await database.rulesDao.queryAddedRules(profileId).get();
       script = scriptId == null

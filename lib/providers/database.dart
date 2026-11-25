@@ -1103,8 +1103,7 @@ class ProxyDialers extends _$ProxyDialers
 }
 
 @riverpod
-class AppRoutes extends _$AppRoutes
-    with AsyncNotifierMixin, OptimisticMixin {
+class AppRoutes extends _$AppRoutes with AsyncNotifierMixin, OptimisticMixin {
   @override
   Stream<List<AppRoute>> build(int profileId) {
     final query = database.appRoutesDao.queryByProfile(profileId);
@@ -1136,7 +1135,7 @@ class AppRoutes extends _$AppRoutes
   }
 
   Future<void> delete(int id) {
-    optimistic(
+    return optimisticAsync(
       value.where((item) => item.id != id).toList(),
       () => database.appRoutesDao.deleteById(id),
     );

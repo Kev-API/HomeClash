@@ -4002,4 +4002,69 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get vpnServiceStartFailed => 'No se pudo iniciar el servicio VPN.';
+
+  @override
+  String get appRoutes => 'Rutas de aplicaciones';
+
+  @override
+  String get appRoutesDesc =>
+      'Envía el tráfico de una aplicación por su propia salida, antes que cualquier otra regla.';
+
+  @override
+  String get appRoutesEmpty => 'Aún no hay rutas de aplicaciones';
+
+  @override
+  String get appRouteAdd => 'Añadir una aplicación';
+
+  @override
+  String get appRouteExit => 'Salida';
+
+  @override
+  String get appRouteExitDesc =>
+      'Por dónde sale el tráfico de esta aplicación.';
+
+  @override
+  String get appRouteMatchValue => 'Paquete o nombre de proceso';
+
+  @override
+  String get appRouteMatchValueDesc =>
+      'El nombre del paquete de Android o el nombre del ejecutable en otros sistemas.';
+
+  @override
+  String get appRouteMatchKind => 'Coincidir por';
+
+  @override
+  String get appRouteKindPackage => 'Nombre del paquete';
+
+  @override
+  String get appRouteKindProcess => 'Nombre del proceso';
+
+  @override
+  String get appRouteKindPath => 'Ruta del ejecutable';
+
+  @override
+  String get appRoutePickApp => 'Elegir una aplicación instalada';
+
+  @override
+  String get appRouteDuplicate => 'Esta aplicación ya tiene una ruta';
+
+  @override
+  String customIssueAppRouteTaken(Object value, Object target) {
+    return '$value ya sale por $target';
+  }
+
+  @override
+  String get appRouteDirect => 'Directo';
+
+  @override
+  String get loopbackEmpty =>
+      'Ningún AppContainer está exento del bloqueo de bucle invertido.';
+
+  @override
+  String get loopbackFailed => 'No se pudo leer la lista de exenciones';
+
+  @override
+  String loopbackCount(Object count) {
+    return '$count exentos';
+  }
 }

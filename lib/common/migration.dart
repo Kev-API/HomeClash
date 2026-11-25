@@ -108,8 +108,23 @@ class Migration {
 
   Future<Config> run() async {
     final configMap = await _store.getConfigMap();
-    final config = await _migrate(configMap);
+    final migrated = await _migrate(
+      configMap,
+      beforeSave: configMap == null ? _applyFirstLaunchDefaults : null,
+    );
+    if (migrated.saveFailed) {
+      return migrated.config;
+    }
+    final config = migrated.config;
     return _upgrade(config, installed: configMap != null);
+  }
+
+  Config _applyFirstLaunchDefaults(Config config) {
+    var upgraded = config;
+    for (final version in _runsOnFirstLaunch) {
+      upgraded = _upgrades[version]!(upgraded);
+    }
+    return upgraded;
   }
 
   Future<Config> _upgrade(Config config, {required bool installed}) async {
@@ -132,7 +147,10 @@ class Migration {
     return upgraded;
   }
 
-  Future<Config> _migrate(Map<String, Object?>? configMap) async {
+  Future<({Config config, bool saveFailed})> _migrate(
+    Map<String, Object?>? configMap, {
+    Config Function(Config config)? beforeSave,
+  }) async {
     var oldVersion = await _store.getVersion();
     Config? config;
     if (oldVersion > currentVersion) {
@@ -158,7 +176,7 @@ class Migration {
         if (hasPlainTextDavPassword && !await _store.saveConfig(config)) {
           throw StateError('Failed to obfuscate the legacy WebDAV password');
         }
-        return config;
+        return (config: config, saveFailed: false);
       }
     }
 
@@ -185,19 +203,20 @@ class Migration {
 
     config = Config.realFromJson(data.configMap);
     await _store.restore(data);
-    if (!await _store.saveConfig(config)) {
+    final configToSave = beforeSave?.call(config) ?? config;
+    if (!await _store.saveConfig(configToSave)) {
       // An unopenable store is reported later by the corrupt-cache dialog,
       // which offers a reset; failing here would hide that path.
       if (await _store.isAvailable) {
         throw StateError('Failed to save migrated preferences');
       }
-      return config;
+      return (config: config, saveFailed: true);
     }
     if (shouldClearClashConfig) {
       await _store.clearClashConfig();
     }
     await _store.setVersion(currentVersion);
-    return config;
+    return (config: configToSave, saveFailed: false);
   }
 }
 

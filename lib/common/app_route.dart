@@ -14,7 +14,7 @@ RuleAction _actionOf(AppMatchKind kind) => switch (kind) {
 /// needs `PROCESS-PATH`.
 String appRouteLine(AppRoute route) {
   final action = _actionOf(route.matchKind);
-  return '${action.name},${route.matchValue},${route.target}';
+  return '${action.value},${route.matchValue},${route.target}';
 }
 
 /// Routes that can be written as rules, in the order they must appear.
@@ -32,18 +32,19 @@ List<AppRoute> effectiveAppRoutes(Iterable<AppRoute> routes) {
       continue;
     }
     final value = route.matchValue.trim();
-    if (value.isEmpty || route.target.trim().isEmpty) {
+    final target = route.target.trim();
+    if (value.isEmpty || target.isEmpty) {
       continue;
     }
     // A rule line joins its fields with commas, so the core would read a value
     // or target holding one as cut short.
-    if (value.contains(',') || route.target.contains(',')) {
+    if (value.contains(',') || target.contains(',')) {
       continue;
     }
     if (!seen.add('${route.matchKind.name}\u0000$value')) {
       continue;
     }
-    kept.add(route);
+    kept.add(route.copyWith(matchValue: value, target: target));
   }
   return kept;
 }

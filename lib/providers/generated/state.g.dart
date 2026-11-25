@@ -1053,7 +1053,7 @@ final class CustomProfileDataProvider
   }
 }
 
-String _$customProfileDataHash() => r'ac6ab2c3e19ae2724704bfbda1b8751867219e2b';
+String _$customProfileDataHash() => r'594716ba66063abfa7b3e4894e9b4a23c041461b';
 
 /// Null until every source loads, so no check reads a loading one as empty.
 
@@ -3848,7 +3848,7 @@ final class SetupStateProvider
   }
 }
 
-String _$setupStateHash() => r'c3e1a96ff46caa5697b540385eb576098af89318';
+String _$setupStateHash() => r'c0639d13e7541d0f5e9397b48cb00212495a605b';
 
 final class SetupStateFamily extends $Family
     with $FunctionalFamilyOverride<FutureOr<SetupState>, int?> {

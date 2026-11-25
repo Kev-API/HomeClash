@@ -42,6 +42,11 @@ class _TestProxyDialers extends ProxyDialers {
   Stream<Map<int, String>> build(int profileId) => Stream.value(initial);
 }
 
+class _TestAppRoutes extends AppRoutes {
+  @override
+  Stream<List<AppRoute>> build(int profileId) => Stream.value(const []);
+}
+
 class _TestProfileRules extends ProfileRules {
   final List<Rule> initial;
 
@@ -78,6 +83,7 @@ Future<void> _loadSources(ProviderContainer container) async {
   await container.read(proxyGroupsProvider(profileId).future);
   await container.read(customProxiesProvider.future);
   await container.read(proxyDialersProvider(profileId).future);
+  await container.read(appRoutesProvider(profileId).future);
   await container.read(clashProvidersProvider.future);
 }
 
@@ -102,6 +108,7 @@ void main() {
         profileRulesProvider.overrideWith2((_) => _TestProfileRules()),
         customProxiesProvider.overrideWith(_TestCustomProxies.new),
         proxyDialersProvider.overrideWith2((_) => _TestProxyDialers()),
+        appRoutesProvider.overrideWith2((_) => _TestAppRoutes()),
         proxyGroupsProvider.overrideWith2(
           (_) => _TestProxyGroups.pending(groups.future),
         ),
@@ -143,6 +150,7 @@ void main() {
           () => _TestCustomProxies.pending(proxies.future),
         ),
         proxyDialersProvider.overrideWith2((_) => _TestProxyDialers()),
+        appRoutesProvider.overrideWith2((_) => _TestAppRoutes()),
         proxyGroupsProvider.overrideWith2(
           (_) => _TestProxyGroups([proxyGroup.copyWith(use: null)]),
         ),
@@ -186,6 +194,7 @@ void main() {
           ]),
         ),
         proxyDialersProvider.overrideWith2((_) => _TestProxyDialers()),
+        appRoutesProvider.overrideWith2((_) => _TestAppRoutes()),
         proxyGroupsProvider.overrideWith2(
           (_) => _TestProxyGroups([
             proxyGroup.copyWith(proxies: ['Home'], use: ['Subscription']),
@@ -276,6 +285,7 @@ void main() {
           profileRulesProvider.overrideWith2((_) => _TestProfileRules()),
           customProxiesProvider.overrideWith(_TestCustomProxies.new),
           proxyDialersProvider.overrideWith2((_) => _TestProxyDialers()),
+          appRoutesProvider.overrideWith2((_) => _TestAppRoutes()),
           proxyGroupsProvider.overrideWith2(
             (_) => _TestProxyGroups([proxyGroup]),
           ),
@@ -327,6 +337,7 @@ void main() {
           profileRulesProvider.overrideWith2((_) => _TestProfileRules()),
           customProxiesProvider.overrideWith(_TestCustomProxies.new),
           proxyDialersProvider.overrideWith2((_) => _TestProxyDialers()),
+          appRoutesProvider.overrideWith2((_) => _TestAppRoutes()),
           proxyGroupsProvider.overrideWith2(
             (_) => _TestProxyGroups([proxyGroup]),
           ),
@@ -376,6 +387,7 @@ void main() {
         profileRulesProvider.overrideWith2((_) => _TestProfileRules(rules)),
         customProxiesProvider.overrideWith(_TestCustomProxies.new),
         proxyDialersProvider.overrideWith2((_) => _TestProxyDialers()),
+        appRoutesProvider.overrideWith2((_) => _TestAppRoutes()),
         proxyGroupsProvider.overrideWith2(
           (_) => _TestProxyGroups([proxyGroup]),
         ),
@@ -438,6 +450,7 @@ void main() {
           proxyDialersProvider.overrideWith2(
             (_) => _TestProxyDialers({1: 'Gone', 2: 'Relay', 3: 'Landing'}),
           ),
+          appRoutesProvider.overrideWith2((_) => _TestAppRoutes()),
         ],
       );
       addTearDown(container.dispose);

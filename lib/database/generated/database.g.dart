@@ -4438,6 +4438,461 @@ class ProxyDialersCompanion extends UpdateCompanion<RawProxyDialer> {
   }
 }
 
+class $AppRoutesTable extends AppRoutes
+    with TableInfo<$AppRoutesTable, RawAppRoute> {
+  @override
+  final GeneratedDatabase attachedDatabase;
+  final String? _alias;
+  $AppRoutesTable(this.attachedDatabase, [this._alias]);
+  static const VerificationMeta _idMeta = const VerificationMeta('id');
+  @override
+  late final GeneratedColumn<int> id = GeneratedColumn<int>(
+    'id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: false,
+  );
+  static const VerificationMeta _profileIdMeta = const VerificationMeta(
+    'profileId',
+  );
+  @override
+  late final GeneratedColumn<int> profileId = GeneratedColumn<int>(
+    'profile_id',
+    aliasedName,
+    false,
+    type: DriftSqlType.int,
+    requiredDuringInsert: true,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'REFERENCES profiles (id) ON DELETE CASCADE',
+    ),
+  );
+  @override
+  late final GeneratedColumnWithTypeConverter<AppMatchKind, String> matchKind =
+      GeneratedColumn<String>(
+        'match_kind',
+        aliasedName,
+        false,
+        type: DriftSqlType.string,
+        requiredDuringInsert: true,
+      ).withConverter<AppMatchKind>($AppRoutesTable.$convertermatchKind);
+  static const VerificationMeta _matchValueMeta = const VerificationMeta(
+    'matchValue',
+  );
+  @override
+  late final GeneratedColumn<String> matchValue = GeneratedColumn<String>(
+    'match_value',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _targetMeta = const VerificationMeta('target');
+  @override
+  late final GeneratedColumn<String> target = GeneratedColumn<String>(
+    'target',
+    aliasedName,
+    false,
+    type: DriftSqlType.string,
+    requiredDuringInsert: true,
+  );
+  static const VerificationMeta _enabledMeta = const VerificationMeta(
+    'enabled',
+  );
+  @override
+  late final GeneratedColumn<bool> enabled = GeneratedColumn<bool>(
+    'enabled',
+    aliasedName,
+    false,
+    type: DriftSqlType.bool,
+    requiredDuringInsert: false,
+    defaultConstraints: GeneratedColumn.constraintIsAlways(
+      'CHECK ("enabled" IN (0, 1))',
+    ),
+    defaultValue: const Constant(true),
+  );
+  static const VerificationMeta _orderMeta = const VerificationMeta('order');
+  @override
+  late final GeneratedColumn<String> order = GeneratedColumn<String>(
+    'order',
+    aliasedName,
+    true,
+    type: DriftSqlType.string,
+    requiredDuringInsert: false,
+  );
+  @override
+  List<GeneratedColumn> get $columns => [
+    id,
+    profileId,
+    matchKind,
+    matchValue,
+    target,
+    enabled,
+    order,
+  ];
+  @override
+  String get aliasedName => _alias ?? actualTableName;
+  @override
+  String get actualTableName => $name;
+  static const String $name = 'app_routes';
+  @override
+  VerificationContext validateIntegrity(
+    Insertable<RawAppRoute> instance, {
+    bool isInserting = false,
+  }) {
+    final context = VerificationContext();
+    final data = instance.toColumns(true);
+    if (data.containsKey('id')) {
+      context.handle(_idMeta, id.isAcceptableOrUnknown(data['id']!, _idMeta));
+    }
+    if (data.containsKey('profile_id')) {
+      context.handle(
+        _profileIdMeta,
+        profileId.isAcceptableOrUnknown(data['profile_id']!, _profileIdMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_profileIdMeta);
+    }
+    if (data.containsKey('match_value')) {
+      context.handle(
+        _matchValueMeta,
+        matchValue.isAcceptableOrUnknown(data['match_value']!, _matchValueMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_matchValueMeta);
+    }
+    if (data.containsKey('target')) {
+      context.handle(
+        _targetMeta,
+        target.isAcceptableOrUnknown(data['target']!, _targetMeta),
+      );
+    } else if (isInserting) {
+      context.missing(_targetMeta);
+    }
+    if (data.containsKey('enabled')) {
+      context.handle(
+        _enabledMeta,
+        enabled.isAcceptableOrUnknown(data['enabled']!, _enabledMeta),
+      );
+    }
+    if (data.containsKey('order')) {
+      context.handle(
+        _orderMeta,
+        order.isAcceptableOrUnknown(data['order']!, _orderMeta),
+      );
+    }
+    return context;
+  }
+
+  @override
+  Set<GeneratedColumn> get $primaryKey => {id};
+  @override
+  RawAppRoute map(Map<String, dynamic> data, {String? tablePrefix}) {
+    final effectivePrefix = tablePrefix != null ? '$tablePrefix.' : '';
+    return RawAppRoute(
+      id: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}id'],
+      )!,
+      profileId: attachedDatabase.typeMapping.read(
+        DriftSqlType.int,
+        data['${effectivePrefix}profile_id'],
+      )!,
+      matchKind: $AppRoutesTable.$convertermatchKind.fromSql(
+        attachedDatabase.typeMapping.read(
+          DriftSqlType.string,
+          data['${effectivePrefix}match_kind'],
+        )!,
+      ),
+      matchValue: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}match_value'],
+      )!,
+      target: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}target'],
+      )!,
+      enabled: attachedDatabase.typeMapping.read(
+        DriftSqlType.bool,
+        data['${effectivePrefix}enabled'],
+      )!,
+      order: attachedDatabase.typeMapping.read(
+        DriftSqlType.string,
+        data['${effectivePrefix}order'],
+      ),
+    );
+  }
+
+  @override
+  $AppRoutesTable createAlias(String alias) {
+    return $AppRoutesTable(attachedDatabase, alias);
+  }
+
+  static JsonTypeConverter2<AppMatchKind, String, String> $convertermatchKind =
+      const EnumNameConverter<AppMatchKind>(AppMatchKind.values);
+}
+
+class RawAppRoute extends DataClass implements Insertable<RawAppRoute> {
+  final int id;
+  final int profileId;
+  final AppMatchKind matchKind;
+
+  /// The package name, executable name or executable path to match.
+  final String matchValue;
+
+  /// Where the app's traffic leaves: DIRECT, a proxy group or a local proxy.
+  final String target;
+  final bool enabled;
+  final String? order;
+  const RawAppRoute({
+    required this.id,
+    required this.profileId,
+    required this.matchKind,
+    required this.matchValue,
+    required this.target,
+    required this.enabled,
+    this.order,
+  });
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    map['id'] = Variable<int>(id);
+    map['profile_id'] = Variable<int>(profileId);
+    {
+      map['match_kind'] = Variable<String>(
+        $AppRoutesTable.$convertermatchKind.toSql(matchKind),
+      );
+    }
+    map['match_value'] = Variable<String>(matchValue);
+    map['target'] = Variable<String>(target);
+    map['enabled'] = Variable<bool>(enabled);
+    if (!nullToAbsent || order != null) {
+      map['order'] = Variable<String>(order);
+    }
+    return map;
+  }
+
+  AppRoutesCompanion toCompanion(bool nullToAbsent) {
+    return AppRoutesCompanion(
+      id: Value(id),
+      profileId: Value(profileId),
+      matchKind: Value(matchKind),
+      matchValue: Value(matchValue),
+      target: Value(target),
+      enabled: Value(enabled),
+      order: order == null && nullToAbsent
+          ? const Value.absent()
+          : Value(order),
+    );
+  }
+
+  factory RawAppRoute.fromJson(
+    Map<String, dynamic> json, {
+    ValueSerializer? serializer,
+  }) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return RawAppRoute(
+      id: serializer.fromJson<int>(json['id']),
+      profileId: serializer.fromJson<int>(json['profileId']),
+      matchKind: $AppRoutesTable.$convertermatchKind.fromJson(
+        serializer.fromJson<String>(json['matchKind']),
+      ),
+      matchValue: serializer.fromJson<String>(json['matchValue']),
+      target: serializer.fromJson<String>(json['target']),
+      enabled: serializer.fromJson<bool>(json['enabled']),
+      order: serializer.fromJson<String?>(json['order']),
+    );
+  }
+  @override
+  Map<String, dynamic> toJson({ValueSerializer? serializer}) {
+    serializer ??= driftRuntimeOptions.defaultSerializer;
+    return <String, dynamic>{
+      'id': serializer.toJson<int>(id),
+      'profileId': serializer.toJson<int>(profileId),
+      'matchKind': serializer.toJson<String>(
+        $AppRoutesTable.$convertermatchKind.toJson(matchKind),
+      ),
+      'matchValue': serializer.toJson<String>(matchValue),
+      'target': serializer.toJson<String>(target),
+      'enabled': serializer.toJson<bool>(enabled),
+      'order': serializer.toJson<String?>(order),
+    };
+  }
+
+  RawAppRoute copyWith({
+    int? id,
+    int? profileId,
+    AppMatchKind? matchKind,
+    String? matchValue,
+    String? target,
+    bool? enabled,
+    Value<String?> order = const Value.absent(),
+  }) => RawAppRoute(
+    id: id ?? this.id,
+    profileId: profileId ?? this.profileId,
+    matchKind: matchKind ?? this.matchKind,
+    matchValue: matchValue ?? this.matchValue,
+    target: target ?? this.target,
+    enabled: enabled ?? this.enabled,
+    order: order.present ? order.value : this.order,
+  );
+  RawAppRoute copyWithCompanion(AppRoutesCompanion data) {
+    return RawAppRoute(
+      id: data.id.present ? data.id.value : this.id,
+      profileId: data.profileId.present ? data.profileId.value : this.profileId,
+      matchKind: data.matchKind.present ? data.matchKind.value : this.matchKind,
+      matchValue: data.matchValue.present
+          ? data.matchValue.value
+          : this.matchValue,
+      target: data.target.present ? data.target.value : this.target,
+      enabled: data.enabled.present ? data.enabled.value : this.enabled,
+      order: data.order.present ? data.order.value : this.order,
+    );
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('RawAppRoute(')
+          ..write('id: $id, ')
+          ..write('profileId: $profileId, ')
+          ..write('matchKind: $matchKind, ')
+          ..write('matchValue: $matchValue, ')
+          ..write('target: $target, ')
+          ..write('enabled: $enabled, ')
+          ..write('order: $order')
+          ..write(')'))
+        .toString();
+  }
+
+  @override
+  int get hashCode =>
+      Object.hash(id, profileId, matchKind, matchValue, target, enabled, order);
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      (other is RawAppRoute &&
+          other.id == this.id &&
+          other.profileId == this.profileId &&
+          other.matchKind == this.matchKind &&
+          other.matchValue == this.matchValue &&
+          other.target == this.target &&
+          other.enabled == this.enabled &&
+          other.order == this.order);
+}
+
+class AppRoutesCompanion extends UpdateCompanion<RawAppRoute> {
+  final Value<int> id;
+  final Value<int> profileId;
+  final Value<AppMatchKind> matchKind;
+  final Value<String> matchValue;
+  final Value<String> target;
+  final Value<bool> enabled;
+  final Value<String?> order;
+  const AppRoutesCompanion({
+    this.id = const Value.absent(),
+    this.profileId = const Value.absent(),
+    this.matchKind = const Value.absent(),
+    this.matchValue = const Value.absent(),
+    this.target = const Value.absent(),
+    this.enabled = const Value.absent(),
+    this.order = const Value.absent(),
+  });
+  AppRoutesCompanion.insert({
+    this.id = const Value.absent(),
+    required int profileId,
+    required AppMatchKind matchKind,
+    required String matchValue,
+    required String target,
+    this.enabled = const Value.absent(),
+    this.order = const Value.absent(),
+  }) : profileId = Value(profileId),
+       matchKind = Value(matchKind),
+       matchValue = Value(matchValue),
+       target = Value(target);
+  static Insertable<RawAppRoute> custom({
+    Expression<int>? id,
+    Expression<int>? profileId,
+    Expression<String>? matchKind,
+    Expression<String>? matchValue,
+    Expression<String>? target,
+    Expression<bool>? enabled,
+    Expression<String>? order,
+  }) {
+    return RawValuesInsertable({
+      if (id != null) 'id': id,
+      if (profileId != null) 'profile_id': profileId,
+      if (matchKind != null) 'match_kind': matchKind,
+      if (matchValue != null) 'match_value': matchValue,
+      if (target != null) 'target': target,
+      if (enabled != null) 'enabled': enabled,
+      if (order != null) 'order': order,
+    });
+  }
+
+  AppRoutesCompanion copyWith({
+    Value<int>? id,
+    Value<int>? profileId,
+    Value<AppMatchKind>? matchKind,
+    Value<String>? matchValue,
+    Value<String>? target,
+    Value<bool>? enabled,
+    Value<String?>? order,
+  }) {
+    return AppRoutesCompanion(
+      id: id ?? this.id,
+      profileId: profileId ?? this.profileId,
+      matchKind: matchKind ?? this.matchKind,
+      matchValue: matchValue ?? this.matchValue,
+      target: target ?? this.target,
+      enabled: enabled ?? this.enabled,
+      order: order ?? this.order,
+    );
+  }
+
+  @override
+  Map<String, Expression> toColumns(bool nullToAbsent) {
+    final map = <String, Expression>{};
+    if (id.present) {
+      map['id'] = Variable<int>(id.value);
+    }
+    if (profileId.present) {
+      map['profile_id'] = Variable<int>(profileId.value);
+    }
+    if (matchKind.present) {
+      map['match_kind'] = Variable<String>(
+        $AppRoutesTable.$convertermatchKind.toSql(matchKind.value),
+      );
+    }
+    if (matchValue.present) {
+      map['match_value'] = Variable<String>(matchValue.value);
+    }
+    if (target.present) {
+      map['target'] = Variable<String>(target.value);
+    }
+    if (enabled.present) {
+      map['enabled'] = Variable<bool>(enabled.value);
+    }
+    if (order.present) {
+      map['order'] = Variable<String>(order.value);
+    }
+    return map;
+  }
+
+  @override
+  String toString() {
+    return (StringBuffer('AppRoutesCompanion(')
+          ..write('id: $id, ')
+          ..write('profileId: $profileId, ')
+          ..write('matchKind: $matchKind, ')
+          ..write('matchValue: $matchValue, ')
+          ..write('target: $target, ')
+          ..write('enabled: $enabled, ')
+          ..write('order: $order')
+          ..write(')'))
+        .toString();
+  }
+}
+
 class $IpQualitiesTable extends IpQualities
     with TableInfo<$IpQualitiesTable, IpQualityRecord> {
   @override
@@ -5466,6 +5921,7 @@ abstract class _$Database extends GeneratedDatabase {
   late final $ClashProvidersTable clashProviders = $ClashProvidersTable(this);
   late final $CustomProxiesTable customProxies = $CustomProxiesTable(this);
   late final $ProxyDialersTable proxyDialers = $ProxyDialersTable(this);
+  late final $AppRoutesTable appRoutes = $AppRoutesTable(this);
   late final $IpQualitiesTable ipQualities = $IpQualitiesTable(this);
   late final $MitmModulesTable mitmModules = $MitmModulesTable(this);
   late final Index idxRuleTarget = Index(
@@ -5499,6 +5955,7 @@ abstract class _$Database extends GeneratedDatabase {
   late final ProxyDialersDao proxyDialersDao = ProxyDialersDao(
     this as Database,
   );
+  late final AppRoutesDao appRoutesDao = AppRoutesDao(this as Database);
   late final IpQualitiesDao ipQualitiesDao = IpQualitiesDao(this as Database);
   late final MitmModulesDao mitmModulesDao = MitmModulesDao(this as Database);
   @override
@@ -5516,6 +5973,7 @@ abstract class _$Database extends GeneratedDatabase {
     clashProviders,
     customProxies,
     proxyDialers,
+    appRoutes,
     ipQualities,
     mitmModules,
     idxRuleTarget,
@@ -5566,6 +6024,13 @@ abstract class _$Database extends GeneratedDatabase {
         limitUpdateKind: UpdateKind.delete,
       ),
       result: [TableUpdate('proxy_dialers', kind: UpdateKind.delete)],
+    ),
+    WritePropagation(
+      on: TableUpdateQuery.onTableName(
+        'profiles',
+        limitUpdateKind: UpdateKind.delete,
+      ),
+      result: [TableUpdate('app_routes', kind: UpdateKind.delete)],
     ),
   ]);
 }
@@ -5685,6 +6150,24 @@ final class $$ProfilesTableReferences
     ).filter((f) => f.profileId.id.sqlEquals($_itemColumn<int>('id')!));
 
     final cache = $_typedResult.readTableOrNull(_proxyDialersRefsTable($_db));
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: cache),
+    );
+  }
+
+  static MultiTypedResultKey<$AppRoutesTable, List<RawAppRoute>>
+  _appRoutesRefsTable(_$Database db) => MultiTypedResultKey.fromTable(
+    db.appRoutes,
+    aliasName: 'profiles__id__app_routes__profile_id',
+  );
+
+  $$AppRoutesTableProcessedTableManager get appRoutesRefs {
+    final manager = $$AppRoutesTableTableManager(
+      $_db,
+      $_db.appRoutes,
+    ).filter((f) => f.profileId.id.sqlEquals($_itemColumn<int>('id')!));
+
+    final cache = $_typedResult.readTableOrNull(_appRoutesRefsTable($_db));
     return ProcessedTableManager(
       manager.$state.copyWith(prefetchedData: cache),
     );
@@ -5895,6 +6378,31 @@ class $$ProfilesTableFilterComposer
           }) => $$ProxyDialersTableFilterComposer(
             $db: $db,
             $table: $db.proxyDialers,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
+
+  Expression<bool> appRoutesRefs(
+    Expression<bool> Function($$AppRoutesTableFilterComposer f) f,
+  ) {
+    final $$AppRoutesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.appRoutes,
+      getReferencedColumn: (t) => t.profileId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AppRoutesTableFilterComposer(
+            $db: $db,
+            $table: $db.appRoutes,
             $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
             joinBuilder: joinBuilder,
             $removeJoinBuilderFromRootComposer:
@@ -6190,6 +6698,31 @@ class $$ProfilesTableAnnotationComposer
     );
     return f(composer);
   }
+
+  Expression<T> appRoutesRefs<T extends Object>(
+    Expression<T> Function($$AppRoutesTableAnnotationComposer a) f,
+  ) {
+    final $$AppRoutesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.id,
+      referencedTable: $db.appRoutes,
+      getReferencedColumn: (t) => t.profileId,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$AppRoutesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.appRoutes,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return f(composer);
+  }
 }
 
 class $$ProfilesTableTableManager
@@ -6210,6 +6743,7 @@ class $$ProfilesTableTableManager
             bool disabledRulesRefs,
             bool proxyGroupsRefs,
             bool proxyDialersRefs,
+            bool appRoutesRefs,
           })
         > {
   $$ProfilesTableTableManager(_$Database db, $ProfilesTable table)
@@ -6319,6 +6853,7 @@ class $$ProfilesTableTableManager
                 disabledRulesRefs = false,
                 proxyGroupsRefs = false,
                 proxyDialersRefs = false,
+                appRoutesRefs = false,
               }) {
                 return PrefetchHooks(
                   db: db,
@@ -6327,6 +6862,7 @@ class $$ProfilesTableTableManager
                     if (disabledRulesRefs) db.disabledRules,
                     if (proxyGroupsRefs) db.proxyGroups,
                     if (proxyDialersRefs) db.proxyDialers,
+                    if (appRoutesRefs) db.appRoutes,
                   ],
                   addJoins: null,
                   getPrefetchedDataCallback: (items) async {
@@ -6415,6 +6951,27 @@ class $$ProfilesTableTableManager
                               ),
                           typedResults: items,
                         ),
+                      if (appRoutesRefs)
+                        await $_getPrefetchedData<
+                          RawProfile,
+                          $ProfilesTable,
+                          RawAppRoute
+                        >(
+                          currentTable: table,
+                          referencedTable: $$ProfilesTableReferences
+                              ._appRoutesRefsTable(db),
+                          managerFromTypedResult: (p0) =>
+                              $$ProfilesTableReferences(
+                                db,
+                                table,
+                                p0,
+                              ).appRoutesRefs,
+                          referencedItemsForCurrentItem:
+                              (item, referencedItems) => referencedItems.where(
+                                (e) => e.profileId == item.id,
+                              ),
+                          typedResults: items,
+                        ),
                     ];
                   },
                 );
@@ -6440,6 +6997,7 @@ typedef $$ProfilesTableProcessedTableManager =
         bool disabledRulesRefs,
         bool proxyGroupsRefs,
         bool proxyDialersRefs,
+        bool appRoutesRefs,
       })
     >;
 typedef $$ScriptsTableCreateCompanionBuilder =
@@ -9167,6 +9725,358 @@ typedef $$ProxyDialersTableProcessedTableManager =
       RawProxyDialer,
       PrefetchHooks Function({bool profileId, bool proxyId})
     >;
+typedef $$AppRoutesTableCreateCompanionBuilder =
+    AppRoutesCompanion Function({
+      Value<int> id,
+      required int profileId,
+      required AppMatchKind matchKind,
+      required String matchValue,
+      required String target,
+      Value<bool> enabled,
+      Value<String?> order,
+    });
+typedef $$AppRoutesTableUpdateCompanionBuilder =
+    AppRoutesCompanion Function({
+      Value<int> id,
+      Value<int> profileId,
+      Value<AppMatchKind> matchKind,
+      Value<String> matchValue,
+      Value<String> target,
+      Value<bool> enabled,
+      Value<String?> order,
+    });
+
+final class $$AppRoutesTableReferences
+    extends BaseReferences<_$Database, $AppRoutesTable, RawAppRoute> {
+  $$AppRoutesTableReferences(super.$_db, super.$_table, super.$_typedResult);
+
+  static $ProfilesTable _profileIdTable(_$Database db) =>
+      db.profiles.createAlias('app_routes__profile_id__profiles__id');
+
+  $$ProfilesTableProcessedTableManager get profileId {
+    final $_column = $_itemColumn<int>('profile_id')!;
+
+    final manager = $$ProfilesTableTableManager(
+      $_db,
+      $_db.profiles,
+    ).filter((f) => f.id.sqlEquals($_column));
+    final item = $_typedResult.readTableOrNull(_profileIdTable($_db));
+    if (item == null) return manager;
+    return ProcessedTableManager(
+      manager.$state.copyWith(prefetchedData: [item]),
+    );
+  }
+}
+
+class $$AppRoutesTableFilterComposer
+    extends Composer<_$Database, $AppRoutesTable> {
+  $$AppRoutesTableFilterComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnFilters<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnWithTypeConverterFilters<AppMatchKind, AppMatchKind, String>
+  get matchKind => $composableBuilder(
+    column: $table.matchKind,
+    builder: (column) => ColumnWithTypeConverterFilters(column),
+  );
+
+  ColumnFilters<String> get matchValue => $composableBuilder(
+    column: $table.matchValue,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get target => $composableBuilder(
+    column: $table.target,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<bool> get enabled => $composableBuilder(
+    column: $table.enabled,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  ColumnFilters<String> get order => $composableBuilder(
+    column: $table.order,
+    builder: (column) => ColumnFilters(column),
+  );
+
+  $$ProfilesTableFilterComposer get profileId {
+    final $$ProfilesTableFilterComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.profileId,
+      referencedTable: $db.profiles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ProfilesTableFilterComposer(
+            $db: $db,
+            $table: $db.profiles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$AppRoutesTableOrderingComposer
+    extends Composer<_$Database, $AppRoutesTable> {
+  $$AppRoutesTableOrderingComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  ColumnOrderings<int> get id => $composableBuilder(
+    column: $table.id,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get matchKind => $composableBuilder(
+    column: $table.matchKind,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get matchValue => $composableBuilder(
+    column: $table.matchValue,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get target => $composableBuilder(
+    column: $table.target,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<bool> get enabled => $composableBuilder(
+    column: $table.enabled,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  ColumnOrderings<String> get order => $composableBuilder(
+    column: $table.order,
+    builder: (column) => ColumnOrderings(column),
+  );
+
+  $$ProfilesTableOrderingComposer get profileId {
+    final $$ProfilesTableOrderingComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.profileId,
+      referencedTable: $db.profiles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ProfilesTableOrderingComposer(
+            $db: $db,
+            $table: $db.profiles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$AppRoutesTableAnnotationComposer
+    extends Composer<_$Database, $AppRoutesTable> {
+  $$AppRoutesTableAnnotationComposer({
+    required super.$db,
+    required super.$table,
+    super.joinBuilder,
+    super.$addJoinBuilderToRootComposer,
+    super.$removeJoinBuilderFromRootComposer,
+  });
+  GeneratedColumn<int> get id =>
+      $composableBuilder(column: $table.id, builder: (column) => column);
+
+  GeneratedColumnWithTypeConverter<AppMatchKind, String> get matchKind =>
+      $composableBuilder(column: $table.matchKind, builder: (column) => column);
+
+  GeneratedColumn<String> get matchValue => $composableBuilder(
+    column: $table.matchValue,
+    builder: (column) => column,
+  );
+
+  GeneratedColumn<String> get target =>
+      $composableBuilder(column: $table.target, builder: (column) => column);
+
+  GeneratedColumn<bool> get enabled =>
+      $composableBuilder(column: $table.enabled, builder: (column) => column);
+
+  GeneratedColumn<String> get order =>
+      $composableBuilder(column: $table.order, builder: (column) => column);
+
+  $$ProfilesTableAnnotationComposer get profileId {
+    final $$ProfilesTableAnnotationComposer composer = $composerBuilder(
+      composer: this,
+      getCurrentColumn: (t) => t.profileId,
+      referencedTable: $db.profiles,
+      getReferencedColumn: (t) => t.id,
+      builder:
+          (
+            joinBuilder, {
+            $addJoinBuilderToRootComposer,
+            $removeJoinBuilderFromRootComposer,
+          }) => $$ProfilesTableAnnotationComposer(
+            $db: $db,
+            $table: $db.profiles,
+            $addJoinBuilderToRootComposer: $addJoinBuilderToRootComposer,
+            joinBuilder: joinBuilder,
+            $removeJoinBuilderFromRootComposer:
+                $removeJoinBuilderFromRootComposer,
+          ),
+    );
+    return composer;
+  }
+}
+
+class $$AppRoutesTableTableManager
+    extends
+        RootTableManager<
+          _$Database,
+          $AppRoutesTable,
+          RawAppRoute,
+          $$AppRoutesTableFilterComposer,
+          $$AppRoutesTableOrderingComposer,
+          $$AppRoutesTableAnnotationComposer,
+          $$AppRoutesTableCreateCompanionBuilder,
+          $$AppRoutesTableUpdateCompanionBuilder,
+          (RawAppRoute, $$AppRoutesTableReferences),
+          RawAppRoute,
+          PrefetchHooks Function({bool profileId})
+        > {
+  $$AppRoutesTableTableManager(_$Database db, $AppRoutesTable table)
+    : super(
+        TableManagerState(
+          db: db,
+          table: table,
+          createFilteringComposer: () =>
+              $$AppRoutesTableFilterComposer($db: db, $table: table),
+          createOrderingComposer: () =>
+              $$AppRoutesTableOrderingComposer($db: db, $table: table),
+          createComputedFieldComposer: () =>
+              $$AppRoutesTableAnnotationComposer($db: db, $table: table),
+          updateCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                Value<int> profileId = const Value.absent(),
+                Value<AppMatchKind> matchKind = const Value.absent(),
+                Value<String> matchValue = const Value.absent(),
+                Value<String> target = const Value.absent(),
+                Value<bool> enabled = const Value.absent(),
+                Value<String?> order = const Value.absent(),
+              }) => AppRoutesCompanion(
+                id: id,
+                profileId: profileId,
+                matchKind: matchKind,
+                matchValue: matchValue,
+                target: target,
+                enabled: enabled,
+                order: order,
+              ),
+          createCompanionCallback:
+              ({
+                Value<int> id = const Value.absent(),
+                required int profileId,
+                required AppMatchKind matchKind,
+                required String matchValue,
+                required String target,
+                Value<bool> enabled = const Value.absent(),
+                Value<String?> order = const Value.absent(),
+              }) => AppRoutesCompanion.insert(
+                id: id,
+                profileId: profileId,
+                matchKind: matchKind,
+                matchValue: matchValue,
+                target: target,
+                enabled: enabled,
+                order: order,
+              ),
+          withReferenceMapper: (p0) => p0
+              .map(
+                (e) => (
+                  e.readTable<$AppRoutesTable, RawAppRoute>(table),
+                  $$AppRoutesTableReferences(db, table, e),
+                ),
+              )
+              .toList(),
+          prefetchHooksCallback: ({profileId = false}) {
+            return PrefetchHooks(
+              db: db,
+              explicitlyWatchedTables: [],
+              addJoins:
+                  <
+                    T extends TableManagerState<
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic,
+                      dynamic
+                    >
+                  >(state) {
+                    if (profileId) {
+                      state =
+                          state.withJoin(
+                                currentTable: table,
+                                currentColumn: table.profileId,
+                                referencedTable: $$AppRoutesTableReferences
+                                    ._profileIdTable(db),
+                                referencedColumn: $$AppRoutesTableReferences
+                                    ._profileIdTable(db)
+                                    .id,
+                              )
+                              as T;
+                    }
+
+                    return state;
+                  },
+              getPrefetchedDataCallback: (items) async {
+                return [];
+              },
+            );
+          },
+        ),
+      );
+}
+
+typedef $$AppRoutesTableProcessedTableManager =
+    ProcessedTableManager<
+      _$Database,
+      $AppRoutesTable,
+      RawAppRoute,
+      $$AppRoutesTableFilterComposer,
+      $$AppRoutesTableOrderingComposer,
+      $$AppRoutesTableAnnotationComposer,
+      $$AppRoutesTableCreateCompanionBuilder,
+      $$AppRoutesTableUpdateCompanionBuilder,
+      (RawAppRoute, $$AppRoutesTableReferences),
+      RawAppRoute,
+      PrefetchHooks Function({bool profileId})
+    >;
 typedef $$IpQualitiesTableCreateCompanionBuilder =
     IpQualitiesCompanion Function({
       required String ip,
@@ -9734,6 +10644,8 @@ class $DatabaseManager {
       $$CustomProxiesTableTableManager(_db, _db.customProxies);
   $$ProxyDialersTableTableManager get proxyDialers =>
       $$ProxyDialersTableTableManager(_db, _db.proxyDialers);
+  $$AppRoutesTableTableManager get appRoutes =>
+      $$AppRoutesTableTableManager(_db, _db.appRoutes);
   $$IpQualitiesTableTableManager get ipQualities =>
       $$IpQualitiesTableTableManager(_db, _db.ipQualities);
   $$MitmModulesTableTableManager get mitmModules =>
@@ -9864,6 +10776,21 @@ class ProxyDialersDaoManager {
       $$CustomProxiesTableTableManager(_db.attachedDatabase, _db.customProxies);
   $$ProxyDialersTableTableManager get proxyDialers =>
       $$ProxyDialersTableTableManager(_db.attachedDatabase, _db.proxyDialers);
+}
+
+mixin _$AppRoutesDaoMixin on DatabaseAccessor<Database> {
+  $ProfilesTable get profiles => attachedDatabase.profiles;
+  $AppRoutesTable get appRoutes => attachedDatabase.appRoutes;
+  AppRoutesDaoManager get managers => AppRoutesDaoManager(this);
+}
+
+class AppRoutesDaoManager {
+  final _$AppRoutesDaoMixin _db;
+  AppRoutesDaoManager(this._db);
+  $$ProfilesTableTableManager get profiles =>
+      $$ProfilesTableTableManager(_db.attachedDatabase, _db.profiles);
+  $$AppRoutesTableTableManager get appRoutes =>
+      $$AppRoutesTableTableManager(_db.attachedDatabase, _db.appRoutes);
 }
 
 mixin _$IpQualitiesDaoMixin on DatabaseAccessor<Database> {

@@ -341,8 +341,11 @@ void main() {
 
       test('leaves a TUN the user turned off alone afterwards', () async {
         final configMap = _createConfigMap();
-        (configMap['patchClashConfig']! as Map<String, Object?>)
-            .putIfAbsent('tun', () => <String, Object?>{})['enable'] = false;
+        final patch = configMap['patchClashConfig']! as Map<String, Object?>;
+        final tun =
+            patch.putIfAbsent('tun', () => <String, Object?>{})!
+                as Map<String, Object?>;
+        tun['enable'] = false;
         final store = _FakeMigrationStore(
           configMap: configMap,
           version: Migration.currentVersion,

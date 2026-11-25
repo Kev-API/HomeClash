@@ -74,6 +74,11 @@ class _TestProxyDialers extends ProxyDialers {
   Stream<Map<int, String>> build(int profileId) => Stream.value(const {});
 }
 
+class _TestAppRoutes extends AppRoutes {
+  @override
+  Stream<List<AppRoute>> build(int profileId) => Stream.value(const []);
+}
+
 class _PendingProfileData extends Notifier<CustomProfileData?> {
   @override
   CustomProfileData? build() => null;
@@ -187,6 +192,7 @@ void main() {
         ),
         proxyGroupsProvider.overrideWith2((_) => _TestProxyGroups()),
         proxyDialersProvider.overrideWith2((_) => _TestProxyDialers()),
+        appRoutesProvider.overrideWith2((_) => _TestAppRoutes()),
         currentProfileIdProvider.overrideWithBuild((_, _) => _profileId),
         proxyGroupProvider.overrideWithBuild((_, _) => group),
         ...overrides,

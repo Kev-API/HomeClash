@@ -712,7 +712,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get disabled => '已关闭';
 
   @override
-  String get loopback => 'UWP 回环解锁';
+  String get loopback => 'UWP 回环豁免';
 
   @override
   String get providers => '外部资源';
@@ -3731,4 +3731,65 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get vpnServiceStartFailed => 'VPN 服务无法启动。';
+
+  @override
+  String get appRoutes => '应用分流';
+
+  @override
+  String get appRoutesDesc => '让单个应用的流量从指定出口离开，优先于其它所有规则。';
+
+  @override
+  String get appRoutesEmpty => '还没有应用分流';
+
+  @override
+  String get appRouteAdd => '添加应用';
+
+  @override
+  String get appRouteExit => '出口';
+
+  @override
+  String get appRouteExitDesc => '这个应用的流量从哪里离开。';
+
+  @override
+  String get appRouteMatchValue => '包名或进程名';
+
+  @override
+  String get appRouteMatchValueDesc => 'Android 上填包名，其它平台填可执行文件名。';
+
+  @override
+  String get appRouteMatchKind => '匹配方式';
+
+  @override
+  String get appRouteKindPackage => '包名';
+
+  @override
+  String get appRouteKindProcess => '进程名';
+
+  @override
+  String get appRouteKindPath => '可执行文件路径';
+
+  @override
+  String get appRoutePickApp => '选择已安装的应用';
+
+  @override
+  String get appRouteDuplicate => '这个应用已经配置过分流';
+
+  @override
+  String customIssueAppRouteTaken(Object value, Object target) {
+    return '$value 已经从 $target 离开';
+  }
+
+  @override
+  String get appRouteDirect => '直连';
+
+  @override
+  String get loopbackEmpty => '没有任何应用容器被豁免回环拦截。';
+
+  @override
+  String get loopbackFailed => '读取豁免列表失败';
+
+  @override
+  String loopbackCount(Object count) {
+    return '已豁免 $count 个';
+  }
 }

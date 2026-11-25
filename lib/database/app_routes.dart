@@ -7,11 +7,8 @@ class AppRoutes extends Table {
 
   IntColumn get id => integer()();
 
-  IntColumn get profileId => integer().references(
-    Profiles,
-    #id,
-    onDelete: KeyAction.cascade,
-  )();
+  IntColumn get profileId =>
+      integer().references(Profiles, #id, onDelete: KeyAction.cascade)();
 
   TextColumn get matchKind => textEnum<AppMatchKind>()();
 
@@ -35,30 +32,26 @@ class AppRoutes extends Table {
 }
 
 @DriftAccessor(tables: [AppRoutes])
-class AppRoutesDao extends DatabaseAccessor<Database>
-    with _$AppRoutesDaoMixin {
+class AppRoutesDao extends DatabaseAccessor<Database> with _$AppRoutesDaoMixin {
   AppRoutesDao(super.attachedDatabase);
 
-  Selectable<List<AppRoute>> queryByProfile(int profileId) {
+  Selectable<AppRoute> queryByProfile(int profileId) {
     final query = select(appRoutes)
       ..where((t) => t.profileId.equals(profileId))
       ..orderBy([
         (t) => OrderingTerm.asc(t.order),
         (t) => OrderingTerm.asc(t.matchValue),
       ]);
-    return query.watch().map(
-      (rows) => [
-        for (final row in rows)
-          AppRoute(
-            id: row.id,
-            profileId: row.profileId,
-            matchKind: row.matchKind,
-            matchValue: row.matchValue,
-            target: row.target,
-            enabled: row.enabled,
-            order: row.order,
-          ),
-      ],
+    return query.map(
+      (row) => AppRoute(
+        id: row.id,
+        profileId: row.profileId,
+        matchKind: row.matchKind,
+        matchValue: row.matchValue,
+        target: row.target,
+        enabled: row.enabled,
+        order: row.order,
+      ),
     );
   }
 
@@ -82,9 +75,7 @@ class AppRoutesDao extends DatabaseAccessor<Database>
     required String newName,
   }) {
     final stmt = update(appRoutes);
-    stmt.where(
-      (t) => t.profileId.equals(profileId) & t.target.equals(oldName),
-    );
+    stmt.where((t) => t.profileId.equals(profileId) & t.target.equals(oldName));
     return stmt.write(AppRoutesCompanion(target: Value(newName)));
   }
 

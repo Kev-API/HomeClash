@@ -755,6 +755,95 @@ abstract class _$ProxyDialers extends $StreamNotifier<Map<int, String>> {
   }
 }
 
+@ProviderFor(AppRoutes)
+final appRoutesProvider = AppRoutesFamily._();
+
+final class AppRoutesProvider
+    extends $StreamNotifierProvider<AppRoutes, List<AppRoute>> {
+  AppRoutesProvider._({
+    required AppRoutesFamily super.from,
+    required int super.argument,
+  }) : super(
+         retry: null,
+         name: r'appRoutesProvider',
+         isAutoDispose: true,
+         dependencies: null,
+         $allTransitiveDependencies: null,
+       );
+
+  @override
+  String debugGetCreateSourceHash() => _$appRoutesHash();
+
+  @override
+  String toString() {
+    return r'appRoutesProvider'
+        ''
+        '($argument)';
+  }
+
+  @$internal
+  @override
+  AppRoutes create() => AppRoutes();
+
+  @override
+  bool operator ==(Object other) {
+    return other is AppRoutesProvider && other.argument == argument;
+  }
+
+  @override
+  int get hashCode {
+    return argument.hashCode;
+  }
+}
+
+String _$appRoutesHash() => r'b804cf2a169a4dc470198b4347d95f022fc42539';
+
+final class AppRoutesFamily extends $Family
+    with
+        $ClassFamilyOverride<
+          AppRoutes,
+          AsyncValue<List<AppRoute>>,
+          List<AppRoute>,
+          Stream<List<AppRoute>>,
+          int
+        > {
+  AppRoutesFamily._()
+    : super(
+        retry: null,
+        name: r'appRoutesProvider',
+        dependencies: null,
+        $allTransitiveDependencies: null,
+        isAutoDispose: true,
+      );
+
+  AppRoutesProvider call(int profileId) =>
+      AppRoutesProvider._(argument: profileId, from: this);
+
+  @override
+  String toString() => r'appRoutesProvider';
+}
+
+abstract class _$AppRoutes extends $StreamNotifier<List<AppRoute>> {
+  late final _$args = ref.$arg as int;
+  int get profileId => _$args;
+
+  Stream<List<AppRoute>> build(int profileId);
+  @$mustCallSuper
+  @override
+  WhenComplete runBuild() {
+    final ref = this.ref as $Ref<AsyncValue<List<AppRoute>>, List<AppRoute>>;
+    final element =
+        ref.element
+            as $ClassProviderElement<
+              AnyNotifier<AsyncValue<List<AppRoute>>, List<AppRoute>>,
+              AsyncValue<List<AppRoute>>,
+              Object?,
+              Object?
+            >;
+    return element.handleCreate(ref, () => build(_$args));
+  }
+}
+
 @ProviderFor(ProfileDisabledRuleIds)
 final profileDisabledRuleIdsProvider = ProfileDisabledRuleIdsFamily._();
 

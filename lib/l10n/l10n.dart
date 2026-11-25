@@ -6947,6 +6947,120 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'The VPN service could not start.'**
   String get vpnServiceStartFailed;
+
+  /// No description provided for @appRoutes.
+  ///
+  /// In en, this message translates to:
+  /// **'App routes'**
+  String get appRoutes;
+
+  /// No description provided for @appRoutesDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Send one app\'s traffic through its own exit, ahead of every other rule.'**
+  String get appRoutesDesc;
+
+  /// No description provided for @appRoutesEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No app routes yet'**
+  String get appRoutesEmpty;
+
+  /// No description provided for @appRouteAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Add an app'**
+  String get appRouteAdd;
+
+  /// No description provided for @appRouteExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Exit'**
+  String get appRouteExit;
+
+  /// No description provided for @appRouteExitDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Where this app\'s traffic leaves.'**
+  String get appRouteExitDesc;
+
+  /// No description provided for @appRouteMatchValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Package or process name'**
+  String get appRouteMatchValue;
+
+  /// No description provided for @appRouteMatchValueDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'The Android package name, or the executable name elsewhere.'**
+  String get appRouteMatchValueDesc;
+
+  /// No description provided for @appRouteMatchKind.
+  ///
+  /// In en, this message translates to:
+  /// **'Match on'**
+  String get appRouteMatchKind;
+
+  /// No description provided for @appRouteKindPackage.
+  ///
+  /// In en, this message translates to:
+  /// **'Package name'**
+  String get appRouteKindPackage;
+
+  /// No description provided for @appRouteKindProcess.
+  ///
+  /// In en, this message translates to:
+  /// **'Process name'**
+  String get appRouteKindProcess;
+
+  /// No description provided for @appRouteKindPath.
+  ///
+  /// In en, this message translates to:
+  /// **'Executable path'**
+  String get appRouteKindPath;
+
+  /// No description provided for @appRoutePickApp.
+  ///
+  /// In en, this message translates to:
+  /// **'Pick an installed app'**
+  String get appRoutePickApp;
+
+  /// No description provided for @appRouteDuplicate.
+  ///
+  /// In en, this message translates to:
+  /// **'This app is already routed'**
+  String get appRouteDuplicate;
+
+  /// No description provided for @customIssueAppRouteTaken.
+  ///
+  /// In en, this message translates to:
+  /// **'{value} already leaves through {target}'**
+  String customIssueAppRouteTaken(Object value, Object target);
+
+  /// No description provided for @appRouteDirect.
+  ///
+  /// In en, this message translates to:
+  /// **'Direct'**
+  String get appRouteDirect;
+
+  /// No description provided for @loopbackEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'No AppContainer is exempt from loopback blocking.'**
+  String get loopbackEmpty;
+
+  /// No description provided for @loopbackFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Could not read the exemption list'**
+  String get loopbackFailed;
+
+  /// No description provided for @loopbackCount.
+  ///
+  /// In en, this message translates to:
+  /// **'{count} exempt'**
+  String loopbackCount(Object count);
 }
 
 class _AppLocalizationsDelegate

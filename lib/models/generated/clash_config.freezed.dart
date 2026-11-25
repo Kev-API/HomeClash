@@ -978,6 +978,288 @@ as Set<ProxyField>,
 }
 
 /// @nodoc
+mixin _$AppRoute {
+
+ int get id; int get profileId; AppMatchKind get matchKind; String get matchValue; String get target; bool get enabled; String? get order;
+/// Create a copy of AppRoute
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AppRouteCopyWith<AppRoute> get copyWith => _$AppRouteCopyWithImpl<AppRoute>(this as AppRoute, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+  final _this = this as AppRoute;
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is AppRoute&&(identical(other.id, _this.id) || other.id == _this.id)&&(identical(other.profileId, _this.profileId) || other.profileId == _this.profileId)&&(identical(other.matchKind, _this.matchKind) || other.matchKind == _this.matchKind)&&(identical(other.matchValue, _this.matchValue) || other.matchValue == _this.matchValue)&&(identical(other.target, _this.target) || other.target == _this.target)&&(identical(other.enabled, _this.enabled) || other.enabled == _this.enabled)&&(identical(other.order, _this.order) || other.order == _this.order));
+}
+
+
+@override
+int get hashCode {
+  final _this = this as AppRoute;
+  return Object.hash(runtimeType,_this.id,_this.profileId,_this.matchKind,_this.matchValue,_this.target,_this.enabled,_this.order);
+}
+
+@override
+String toString() {
+  final _this = this as AppRoute;
+  return 'AppRoute(id: ${_this.id}, profileId: ${_this.profileId}, matchKind: ${_this.matchKind}, matchValue: ${_this.matchValue}, target: ${_this.target}, enabled: ${_this.enabled}, order: ${_this.order})';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $AppRouteCopyWith<$Res>  {
+  factory $AppRouteCopyWith(AppRoute value, $Res Function(AppRoute) _then) = _$AppRouteCopyWithImpl;
+@useResult
+$Res call({
+ int id, int profileId, AppMatchKind matchKind, String matchValue, String target, bool enabled, String? order
+});
+
+
+
+
+}
+/// @nodoc
+class _$AppRouteCopyWithImpl<$Res>
+    implements $AppRouteCopyWith<$Res> {
+  _$AppRouteCopyWithImpl(this._self, this._then);
+
+  final AppRoute _self;
+  final $Res Function(AppRoute) _then;
+
+/// Create a copy of AppRoute
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') @override $Res call({Object? id = null,Object? profileId = null,Object? matchKind = null,Object? matchValue = null,Object? target = null,Object? enabled = null,Object? order = freezed,}) {
+  return _then(AppRoute(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,profileId: null == profileId ? _self.profileId : profileId // ignore: cast_nullable_to_non_nullable
+as int,matchKind: null == matchKind ? _self.matchKind : matchKind // ignore: cast_nullable_to_non_nullable
+as AppMatchKind,matchValue: null == matchValue ? _self.matchValue : matchValue // ignore: cast_nullable_to_non_nullable
+as String,target: null == target ? _self.target : target // ignore: cast_nullable_to_non_nullable
+as String,enabled: null == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
+as bool,order: freezed == order ? _self.order : order // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+}
+
+
+/// Adds pattern-matching-related methods to [AppRoute].
+extension AppRoutePatterns on AppRoute {
+/// A variant of `map` that fallback to returning `orElse`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>(TResult Function( _AppRoute value)?  $default,{required TResult orElse(),}){
+final _that = this;
+switch (_that) {
+case _AppRoute() when $default != null:
+return $default(_that);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// Callbacks receives the raw object, upcasted.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case final Subclass2 value:
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult map<TResult extends Object?>(TResult Function( _AppRoute value)  $default,){
+final _that = this;
+switch (_that) {
+case _AppRoute():
+return $default(_that);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `map` that fallback to returning `null`.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case final Subclass value:
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>(TResult? Function( _AppRoute value)?  $default,){
+final _that = this;
+switch (_that) {
+case _AppRoute() when $default != null:
+return $default(_that);case _:
+  return null;
+
+}
+}
+/// A variant of `when` that fallback to an `orElse` callback.
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return orElse();
+/// }
+/// ```
+
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( int id,  int profileId,  AppMatchKind matchKind,  String matchValue,  String target,  bool enabled,  String? order)?  $default,{required TResult orElse(),}) {final _that = this;
+switch (_that) {
+case _AppRoute() when $default != null:
+return $default(_that.id,_that.profileId,_that.matchKind,_that.matchValue,_that.target,_that.enabled,_that.order);case _:
+  return orElse();
+
+}
+}
+/// A `switch`-like method, using callbacks.
+///
+/// As opposed to `map`, this offers destructuring.
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case Subclass2(:final field2):
+///     return ...;
+/// }
+/// ```
+
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( int id,  int profileId,  AppMatchKind matchKind,  String matchValue,  String target,  bool enabled,  String? order)  $default,) {final _that = this;
+switch (_that) {
+case _AppRoute():
+return $default(_that.id,_that.profileId,_that.matchKind,_that.matchValue,_that.target,_that.enabled,_that.order);case _:
+  throw StateError('Unexpected subclass');
+
+}
+}
+/// A variant of `when` that fallback to returning `null`
+///
+/// It is equivalent to doing:
+/// ```dart
+/// switch (sealedClass) {
+///   case Subclass(:final field):
+///     return ...;
+///   case _:
+///     return null;
+/// }
+/// ```
+
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( int id,  int profileId,  AppMatchKind matchKind,  String matchValue,  String target,  bool enabled,  String? order)?  $default,) {final _that = this;
+switch (_that) {
+case _AppRoute() when $default != null:
+return $default(_that.id,_that.profileId,_that.matchKind,_that.matchValue,_that.target,_that.enabled,_that.order);case _:
+  return null;
+
+}
+}
+
+}
+
+/// @nodoc
+
+
+class _AppRoute implements AppRoute {
+  const _AppRoute({this.id = -1, required this.profileId, required this.matchKind, required this.matchValue, required this.target, this.enabled = true, this.order});
+  
+
+@override@JsonKey() final  int id;
+@override final  int profileId;
+@override final  AppMatchKind matchKind;
+@override final  String matchValue;
+@override final  String target;
+@override@JsonKey() final  bool enabled;
+@override final  String? order;
+
+/// Create a copy of AppRoute
+/// with the given fields replaced by the non-null parameter values.
+@override @JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+_$AppRouteCopyWith<_AppRoute> get copyWith => __$AppRouteCopyWithImpl<_AppRoute>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _AppRoute&&(identical(other.id, id) || other.id == id)&&(identical(other.profileId, profileId) || other.profileId == profileId)&&(identical(other.matchKind, matchKind) || other.matchKind == matchKind)&&(identical(other.matchValue, matchValue) || other.matchValue == matchValue)&&(identical(other.target, target) || other.target == target)&&(identical(other.enabled, enabled) || other.enabled == enabled)&&(identical(other.order, order) || other.order == order));
+}
+
+
+@override
+int get hashCode {
+    return Object.hash(runtimeType,id,profileId,matchKind,matchValue,target,enabled,order);
+}
+
+@override
+String toString() {
+    return 'AppRoute(id: $id, profileId: $profileId, matchKind: $matchKind, matchValue: $matchValue, target: $target, enabled: $enabled, order: $order)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class _$AppRouteCopyWith<$Res> implements $AppRouteCopyWith<$Res> {
+  factory _$AppRouteCopyWith(_AppRoute value, $Res Function(_AppRoute) _then) = __$AppRouteCopyWithImpl;
+@override @useResult
+$Res call({
+ int id, int profileId, AppMatchKind matchKind, String matchValue, String target, bool enabled, String? order
+});
+
+
+
+
+}
+/// @nodoc
+class __$AppRouteCopyWithImpl<$Res>
+    implements _$AppRouteCopyWith<$Res> {
+  __$AppRouteCopyWithImpl(this._self, this._then);
+
+  final _AppRoute _self;
+  final $Res Function(_AppRoute) _then;
+
+/// Create a copy of AppRoute
+/// with the given fields replaced by the non-null parameter values.
+@override @pragma('vm:prefer-inline') $Res call({Object? id = null,Object? profileId = null,Object? matchKind = null,Object? matchValue = null,Object? target = null,Object? enabled = null,Object? order = freezed,}) {
+  return _then(_AppRoute(
+id: null == id ? _self.id : id // ignore: cast_nullable_to_non_nullable
+as int,profileId: null == profileId ? _self.profileId : profileId // ignore: cast_nullable_to_non_nullable
+as int,matchKind: null == matchKind ? _self.matchKind : matchKind // ignore: cast_nullable_to_non_nullable
+as AppMatchKind,matchValue: null == matchValue ? _self.matchValue : matchValue // ignore: cast_nullable_to_non_nullable
+as String,target: null == target ? _self.target : target // ignore: cast_nullable_to_non_nullable
+as String,enabled: null == enabled ? _self.enabled : enabled // ignore: cast_nullable_to_non_nullable
+as bool,order: freezed == order ? _self.order : order // ignore: cast_nullable_to_non_nullable
+as String?,
+  ));
+}
+
+
+}
+
+/// @nodoc
 mixin _$ProxyDialer {
 
  int get profileId; int get proxyId; String get target;
@@ -1291,7 +1573,7 @@ extension CustomIssuePatterns on CustomIssue {
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( EmptyNameIssue value)?  emptyName,TResult Function( ReservedNameIssue value)?  reservedName,TResult Function( DuplicateNameIssue value)?  duplicateName,TResult Function( CoreRejectedIssue value)?  coreRejected,TResult Function( MissingProxiesIssue value)?  missingProxies,TResult Function( MissingProvidersIssue value)?  missingProviders,TResult Function( NoProxySourceIssue value)?  noProxySource,TResult Function( GroupLoopIssue value)?  groupLoop,TResult Function( InvalidEmptyFallbackIssue value)?  invalidEmptyFallback,TResult Function( InvalidFilterIssue value)?  invalidFilter,TResult Function( InvalidPayloadIssue value)?  invalidPayload,TResult Function( MissingRuleSetIssue value)?  missingRuleSet,TResult Function( MissingSubRuleIssue value)?  missingSubRule,TResult Function( MissingTargetIssue value)?  missingTarget,TResult Function( MissingDialerIssue value)?  missingDialer,TResult Function( DialerLoopIssue value)?  dialerLoop,required TResult orElse(),}){
+@optionalTypeArgs TResult maybeMap<TResult extends Object?>({TResult Function( EmptyNameIssue value)?  emptyName,TResult Function( ReservedNameIssue value)?  reservedName,TResult Function( DuplicateNameIssue value)?  duplicateName,TResult Function( CoreRejectedIssue value)?  coreRejected,TResult Function( MissingProxiesIssue value)?  missingProxies,TResult Function( MissingProvidersIssue value)?  missingProviders,TResult Function( NoProxySourceIssue value)?  noProxySource,TResult Function( GroupLoopIssue value)?  groupLoop,TResult Function( InvalidEmptyFallbackIssue value)?  invalidEmptyFallback,TResult Function( InvalidFilterIssue value)?  invalidFilter,TResult Function( InvalidPayloadIssue value)?  invalidPayload,TResult Function( MissingRuleSetIssue value)?  missingRuleSet,TResult Function( MissingSubRuleIssue value)?  missingSubRule,TResult Function( MissingTargetIssue value)?  missingTarget,TResult Function( MissingDialerIssue value)?  missingDialer,TResult Function( AppRouteTakenIssue value)?  appRouteTaken,TResult Function( DialerLoopIssue value)?  dialerLoop,required TResult orElse(),}){
 final _that = this;
 switch (_that) {
 case EmptyNameIssue() when emptyName != null:
@@ -1309,7 +1591,8 @@ return invalidPayload(_that);case MissingRuleSetIssue() when missingRuleSet != n
 return missingRuleSet(_that);case MissingSubRuleIssue() when missingSubRule != null:
 return missingSubRule(_that);case MissingTargetIssue() when missingTarget != null:
 return missingTarget(_that);case MissingDialerIssue() when missingDialer != null:
-return missingDialer(_that);case DialerLoopIssue() when dialerLoop != null:
+return missingDialer(_that);case AppRouteTakenIssue() when appRouteTaken != null:
+return appRouteTaken(_that);case DialerLoopIssue() when dialerLoop != null:
 return dialerLoop(_that);case _:
   return orElse();
 
@@ -1328,7 +1611,7 @@ return dialerLoop(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( EmptyNameIssue value)  emptyName,required TResult Function( ReservedNameIssue value)  reservedName,required TResult Function( DuplicateNameIssue value)  duplicateName,required TResult Function( CoreRejectedIssue value)  coreRejected,required TResult Function( MissingProxiesIssue value)  missingProxies,required TResult Function( MissingProvidersIssue value)  missingProviders,required TResult Function( NoProxySourceIssue value)  noProxySource,required TResult Function( GroupLoopIssue value)  groupLoop,required TResult Function( InvalidEmptyFallbackIssue value)  invalidEmptyFallback,required TResult Function( InvalidFilterIssue value)  invalidFilter,required TResult Function( InvalidPayloadIssue value)  invalidPayload,required TResult Function( MissingRuleSetIssue value)  missingRuleSet,required TResult Function( MissingSubRuleIssue value)  missingSubRule,required TResult Function( MissingTargetIssue value)  missingTarget,required TResult Function( MissingDialerIssue value)  missingDialer,required TResult Function( DialerLoopIssue value)  dialerLoop,}){
+@optionalTypeArgs TResult map<TResult extends Object?>({required TResult Function( EmptyNameIssue value)  emptyName,required TResult Function( ReservedNameIssue value)  reservedName,required TResult Function( DuplicateNameIssue value)  duplicateName,required TResult Function( CoreRejectedIssue value)  coreRejected,required TResult Function( MissingProxiesIssue value)  missingProxies,required TResult Function( MissingProvidersIssue value)  missingProviders,required TResult Function( NoProxySourceIssue value)  noProxySource,required TResult Function( GroupLoopIssue value)  groupLoop,required TResult Function( InvalidEmptyFallbackIssue value)  invalidEmptyFallback,required TResult Function( InvalidFilterIssue value)  invalidFilter,required TResult Function( InvalidPayloadIssue value)  invalidPayload,required TResult Function( MissingRuleSetIssue value)  missingRuleSet,required TResult Function( MissingSubRuleIssue value)  missingSubRule,required TResult Function( MissingTargetIssue value)  missingTarget,required TResult Function( MissingDialerIssue value)  missingDialer,required TResult Function( AppRouteTakenIssue value)  appRouteTaken,required TResult Function( DialerLoopIssue value)  dialerLoop,}){
 final _that = this;
 switch (_that) {
 case EmptyNameIssue():
@@ -1346,7 +1629,8 @@ return invalidPayload(_that);case MissingRuleSetIssue():
 return missingRuleSet(_that);case MissingSubRuleIssue():
 return missingSubRule(_that);case MissingTargetIssue():
 return missingTarget(_that);case MissingDialerIssue():
-return missingDialer(_that);case DialerLoopIssue():
+return missingDialer(_that);case AppRouteTakenIssue():
+return appRouteTaken(_that);case DialerLoopIssue():
 return dialerLoop(_that);}
 }
 /// A variant of `map` that fallback to returning `null`.
@@ -1361,7 +1645,7 @@ return dialerLoop(_that);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( EmptyNameIssue value)?  emptyName,TResult? Function( ReservedNameIssue value)?  reservedName,TResult? Function( DuplicateNameIssue value)?  duplicateName,TResult? Function( CoreRejectedIssue value)?  coreRejected,TResult? Function( MissingProxiesIssue value)?  missingProxies,TResult? Function( MissingProvidersIssue value)?  missingProviders,TResult? Function( NoProxySourceIssue value)?  noProxySource,TResult? Function( GroupLoopIssue value)?  groupLoop,TResult? Function( InvalidEmptyFallbackIssue value)?  invalidEmptyFallback,TResult? Function( InvalidFilterIssue value)?  invalidFilter,TResult? Function( InvalidPayloadIssue value)?  invalidPayload,TResult? Function( MissingRuleSetIssue value)?  missingRuleSet,TResult? Function( MissingSubRuleIssue value)?  missingSubRule,TResult? Function( MissingTargetIssue value)?  missingTarget,TResult? Function( MissingDialerIssue value)?  missingDialer,TResult? Function( DialerLoopIssue value)?  dialerLoop,}){
+@optionalTypeArgs TResult? mapOrNull<TResult extends Object?>({TResult? Function( EmptyNameIssue value)?  emptyName,TResult? Function( ReservedNameIssue value)?  reservedName,TResult? Function( DuplicateNameIssue value)?  duplicateName,TResult? Function( CoreRejectedIssue value)?  coreRejected,TResult? Function( MissingProxiesIssue value)?  missingProxies,TResult? Function( MissingProvidersIssue value)?  missingProviders,TResult? Function( NoProxySourceIssue value)?  noProxySource,TResult? Function( GroupLoopIssue value)?  groupLoop,TResult? Function( InvalidEmptyFallbackIssue value)?  invalidEmptyFallback,TResult? Function( InvalidFilterIssue value)?  invalidFilter,TResult? Function( InvalidPayloadIssue value)?  invalidPayload,TResult? Function( MissingRuleSetIssue value)?  missingRuleSet,TResult? Function( MissingSubRuleIssue value)?  missingSubRule,TResult? Function( MissingTargetIssue value)?  missingTarget,TResult? Function( MissingDialerIssue value)?  missingDialer,TResult? Function( AppRouteTakenIssue value)?  appRouteTaken,TResult? Function( DialerLoopIssue value)?  dialerLoop,}){
 final _that = this;
 switch (_that) {
 case EmptyNameIssue() when emptyName != null:
@@ -1379,7 +1663,8 @@ return invalidPayload(_that);case MissingRuleSetIssue() when missingRuleSet != n
 return missingRuleSet(_that);case MissingSubRuleIssue() when missingSubRule != null:
 return missingSubRule(_that);case MissingTargetIssue() when missingTarget != null:
 return missingTarget(_that);case MissingDialerIssue() when missingDialer != null:
-return missingDialer(_that);case DialerLoopIssue() when dialerLoop != null:
+return missingDialer(_that);case AppRouteTakenIssue() when appRouteTaken != null:
+return appRouteTaken(_that);case DialerLoopIssue() when dialerLoop != null:
 return dialerLoop(_that);case _:
   return null;
 
@@ -1397,7 +1682,7 @@ return dialerLoop(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  emptyName,TResult Function( String name)?  reservedName,TResult Function( String name)?  duplicateName,TResult Function( String message)?  coreRejected,TResult Function( List<String> names)?  missingProxies,TResult Function( List<String> names)?  missingProviders,TResult Function()?  noProxySource,TResult Function( List<String> names)?  groupLoop,TResult Function( String name)?  invalidEmptyFallback,TResult Function( String name,  String message)?  invalidFilter,TResult Function( RulePayloadError error)?  invalidPayload,TResult Function( String name)?  missingRuleSet,TResult Function( String name)?  missingSubRule,TResult Function( String name)?  missingTarget,TResult Function( String name)?  missingDialer,TResult Function( String proxy,  String target)?  dialerLoop,required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>({TResult Function()?  emptyName,TResult Function( String name)?  reservedName,TResult Function( String name)?  duplicateName,TResult Function( String message)?  coreRejected,TResult Function( List<String> names)?  missingProxies,TResult Function( List<String> names)?  missingProviders,TResult Function()?  noProxySource,TResult Function( List<String> names)?  groupLoop,TResult Function( String name)?  invalidEmptyFallback,TResult Function( String name,  String message)?  invalidFilter,TResult Function( RulePayloadError error)?  invalidPayload,TResult Function( String name)?  missingRuleSet,TResult Function( String name)?  missingSubRule,TResult Function( String name)?  missingTarget,TResult Function( String name)?  missingDialer,TResult Function( String value,  String target)?  appRouteTaken,TResult Function( String proxy,  String target)?  dialerLoop,required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case EmptyNameIssue() when emptyName != null:
 return emptyName();case ReservedNameIssue() when reservedName != null:
@@ -1414,7 +1699,8 @@ return invalidPayload(_that.error);case MissingRuleSetIssue() when missingRuleSe
 return missingRuleSet(_that.name);case MissingSubRuleIssue() when missingSubRule != null:
 return missingSubRule(_that.name);case MissingTargetIssue() when missingTarget != null:
 return missingTarget(_that.name);case MissingDialerIssue() when missingDialer != null:
-return missingDialer(_that.name);case DialerLoopIssue() when dialerLoop != null:
+return missingDialer(_that.name);case AppRouteTakenIssue() when appRouteTaken != null:
+return appRouteTaken(_that.value,_that.target);case DialerLoopIssue() when dialerLoop != null:
 return dialerLoop(_that.proxy,_that.target);case _:
   return orElse();
 
@@ -1433,7 +1719,7 @@ return dialerLoop(_that.proxy,_that.target);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  emptyName,required TResult Function( String name)  reservedName,required TResult Function( String name)  duplicateName,required TResult Function( String message)  coreRejected,required TResult Function( List<String> names)  missingProxies,required TResult Function( List<String> names)  missingProviders,required TResult Function()  noProxySource,required TResult Function( List<String> names)  groupLoop,required TResult Function( String name)  invalidEmptyFallback,required TResult Function( String name,  String message)  invalidFilter,required TResult Function( RulePayloadError error)  invalidPayload,required TResult Function( String name)  missingRuleSet,required TResult Function( String name)  missingSubRule,required TResult Function( String name)  missingTarget,required TResult Function( String name)  missingDialer,required TResult Function( String proxy,  String target)  dialerLoop,}) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>({required TResult Function()  emptyName,required TResult Function( String name)  reservedName,required TResult Function( String name)  duplicateName,required TResult Function( String message)  coreRejected,required TResult Function( List<String> names)  missingProxies,required TResult Function( List<String> names)  missingProviders,required TResult Function()  noProxySource,required TResult Function( List<String> names)  groupLoop,required TResult Function( String name)  invalidEmptyFallback,required TResult Function( String name,  String message)  invalidFilter,required TResult Function( RulePayloadError error)  invalidPayload,required TResult Function( String name)  missingRuleSet,required TResult Function( String name)  missingSubRule,required TResult Function( String name)  missingTarget,required TResult Function( String name)  missingDialer,required TResult Function( String value,  String target)  appRouteTaken,required TResult Function( String proxy,  String target)  dialerLoop,}) {final _that = this;
 switch (_that) {
 case EmptyNameIssue():
 return emptyName();case ReservedNameIssue():
@@ -1450,7 +1736,8 @@ return invalidPayload(_that.error);case MissingRuleSetIssue():
 return missingRuleSet(_that.name);case MissingSubRuleIssue():
 return missingSubRule(_that.name);case MissingTargetIssue():
 return missingTarget(_that.name);case MissingDialerIssue():
-return missingDialer(_that.name);case DialerLoopIssue():
+return missingDialer(_that.name);case AppRouteTakenIssue():
+return appRouteTaken(_that.value,_that.target);case DialerLoopIssue():
 return dialerLoop(_that.proxy,_that.target);}
 }
 /// A variant of `when` that fallback to returning `null`
@@ -1465,7 +1752,7 @@ return dialerLoop(_that.proxy,_that.target);}
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  emptyName,TResult? Function( String name)?  reservedName,TResult? Function( String name)?  duplicateName,TResult? Function( String message)?  coreRejected,TResult? Function( List<String> names)?  missingProxies,TResult? Function( List<String> names)?  missingProviders,TResult? Function()?  noProxySource,TResult? Function( List<String> names)?  groupLoop,TResult? Function( String name)?  invalidEmptyFallback,TResult? Function( String name,  String message)?  invalidFilter,TResult? Function( RulePayloadError error)?  invalidPayload,TResult? Function( String name)?  missingRuleSet,TResult? Function( String name)?  missingSubRule,TResult? Function( String name)?  missingTarget,TResult? Function( String name)?  missingDialer,TResult? Function( String proxy,  String target)?  dialerLoop,}) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>({TResult? Function()?  emptyName,TResult? Function( String name)?  reservedName,TResult? Function( String name)?  duplicateName,TResult? Function( String message)?  coreRejected,TResult? Function( List<String> names)?  missingProxies,TResult? Function( List<String> names)?  missingProviders,TResult? Function()?  noProxySource,TResult? Function( List<String> names)?  groupLoop,TResult? Function( String name)?  invalidEmptyFallback,TResult? Function( String name,  String message)?  invalidFilter,TResult? Function( RulePayloadError error)?  invalidPayload,TResult? Function( String name)?  missingRuleSet,TResult? Function( String name)?  missingSubRule,TResult? Function( String name)?  missingTarget,TResult? Function( String name)?  missingDialer,TResult? Function( String value,  String target)?  appRouteTaken,TResult? Function( String proxy,  String target)?  dialerLoop,}) {final _that = this;
 switch (_that) {
 case EmptyNameIssue() when emptyName != null:
 return emptyName();case ReservedNameIssue() when reservedName != null:
@@ -1482,7 +1769,8 @@ return invalidPayload(_that.error);case MissingRuleSetIssue() when missingRuleSe
 return missingRuleSet(_that.name);case MissingSubRuleIssue() when missingSubRule != null:
 return missingSubRule(_that.name);case MissingTargetIssue() when missingTarget != null:
 return missingTarget(_that.name);case MissingDialerIssue() when missingDialer != null:
-return missingDialer(_that.name);case DialerLoopIssue() when dialerLoop != null:
+return missingDialer(_that.name);case AppRouteTakenIssue() when appRouteTaken != null:
+return appRouteTaken(_that.value,_that.target);case DialerLoopIssue() when dialerLoop != null:
 return dialerLoop(_that.proxy,_that.target);case _:
   return null;
 
@@ -2462,6 +2750,76 @@ as String,
 /// @nodoc
 
 
+class AppRouteTakenIssue implements CustomIssue {
+  const AppRouteTakenIssue(this.value, this.target);
+  
+
+ final  String value;
+ final  String target;
+
+/// Create a copy of CustomIssue
+/// with the given fields replaced by the non-null parameter values.
+@JsonKey(includeFromJson: false, includeToJson: false)
+@pragma('vm:prefer-inline')
+$AppRouteTakenIssueCopyWith<AppRouteTakenIssue> get copyWith => _$AppRouteTakenIssueCopyWithImpl<AppRouteTakenIssue>(this, _$identity);
+
+
+
+@override
+bool operator ==(Object other) {
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is AppRouteTakenIssue&&(identical(other.value, value) || other.value == value)&&(identical(other.target, target) || other.target == target));
+}
+
+
+@override
+int get hashCode {
+    return Object.hash(runtimeType,value,target);
+}
+
+@override
+String toString() {
+    return 'CustomIssue.appRouteTaken(value: $value, target: $target)';
+}
+
+
+}
+
+/// @nodoc
+abstract mixin class $AppRouteTakenIssueCopyWith<$Res> implements $CustomIssueCopyWith<$Res> {
+  factory $AppRouteTakenIssueCopyWith(AppRouteTakenIssue value, $Res Function(AppRouteTakenIssue) _then) = _$AppRouteTakenIssueCopyWithImpl;
+@useResult
+$Res call({
+ String value, String target
+});
+
+
+
+
+}
+/// @nodoc
+class _$AppRouteTakenIssueCopyWithImpl<$Res>
+    implements $AppRouteTakenIssueCopyWith<$Res> {
+  _$AppRouteTakenIssueCopyWithImpl(this._self, this._then);
+
+  final AppRouteTakenIssue _self;
+  final $Res Function(AppRouteTakenIssue) _then;
+
+/// Create a copy of CustomIssue
+/// with the given fields replaced by the non-null parameter values.
+@pragma('vm:prefer-inline') $Res call({Object? value = null,Object? target = null,}) {
+  return _then(AppRouteTakenIssue(
+null == value ? _self.value : value // ignore: cast_nullable_to_non_nullable
+as String,null == target ? _self.target : target // ignore: cast_nullable_to_non_nullable
+as String,
+  ));
+}
+
+
+}
+
+/// @nodoc
+
+
 class DialerLoopIssue implements CustomIssue {
   const DialerLoopIssue(this.proxy, this.target);
   
@@ -2532,7 +2890,7 @@ as String,
 /// @nodoc
 mixin _$CustomProfileIssues {
 
- Map<int, List<CustomIssue>> get proxyGroups; Map<int, List<CustomIssue>> get rules; Map<int, List<CustomIssue>> get dialers; List<CustomIssue> get dns; List<CustomIssue> get ntp;
+ Map<int, List<CustomIssue>> get proxyGroups; Map<int, List<CustomIssue>> get rules; Map<int, List<CustomIssue>> get dialers; Map<int, List<CustomIssue>> get appRoutes; List<CustomIssue> get dns; List<CustomIssue> get ntp;
 /// Create a copy of CustomProfileIssues
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2544,20 +2902,20 @@ $CustomProfileIssuesCopyWith<CustomProfileIssues> get copyWith => _$CustomProfil
 @override
 bool operator ==(Object other) {
   final _this = this as CustomProfileIssues;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomProfileIssues&&const DeepCollectionEquality().equals(other.proxyGroups, _this.proxyGroups)&&const DeepCollectionEquality().equals(other.rules, _this.rules)&&const DeepCollectionEquality().equals(other.dialers, _this.dialers)&&const DeepCollectionEquality().equals(other.dns, _this.dns)&&const DeepCollectionEquality().equals(other.ntp, _this.ntp));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomProfileIssues&&const DeepCollectionEquality().equals(other.proxyGroups, _this.proxyGroups)&&const DeepCollectionEquality().equals(other.rules, _this.rules)&&const DeepCollectionEquality().equals(other.dialers, _this.dialers)&&const DeepCollectionEquality().equals(other.appRoutes, _this.appRoutes)&&const DeepCollectionEquality().equals(other.dns, _this.dns)&&const DeepCollectionEquality().equals(other.ntp, _this.ntp));
 }
 
 
 @override
 int get hashCode {
   final _this = this as CustomProfileIssues;
-  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.proxyGroups),const DeepCollectionEquality().hash(_this.rules),const DeepCollectionEquality().hash(_this.dialers),const DeepCollectionEquality().hash(_this.dns),const DeepCollectionEquality().hash(_this.ntp));
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.proxyGroups),const DeepCollectionEquality().hash(_this.rules),const DeepCollectionEquality().hash(_this.dialers),const DeepCollectionEquality().hash(_this.appRoutes),const DeepCollectionEquality().hash(_this.dns),const DeepCollectionEquality().hash(_this.ntp));
 }
 
 @override
 String toString() {
   final _this = this as CustomProfileIssues;
-  return 'CustomProfileIssues(proxyGroups: ${_this.proxyGroups}, rules: ${_this.rules}, dialers: ${_this.dialers}, dns: ${_this.dns}, ntp: ${_this.ntp})';
+  return 'CustomProfileIssues(proxyGroups: ${_this.proxyGroups}, rules: ${_this.rules}, dialers: ${_this.dialers}, appRoutes: ${_this.appRoutes}, dns: ${_this.dns}, ntp: ${_this.ntp})';
 }
 
 
@@ -2568,7 +2926,7 @@ abstract mixin class $CustomProfileIssuesCopyWith<$Res>  {
   factory $CustomProfileIssuesCopyWith(CustomProfileIssues value, $Res Function(CustomProfileIssues) _then) = _$CustomProfileIssuesCopyWithImpl;
 @useResult
 $Res call({
- Map<int, List<CustomIssue>> proxyGroups, Map<int, List<CustomIssue>> rules, Map<int, List<CustomIssue>> dialers, List<CustomIssue> dns, List<CustomIssue> ntp
+ Map<int, List<CustomIssue>> proxyGroups, Map<int, List<CustomIssue>> rules, Map<int, List<CustomIssue>> dialers, Map<int, List<CustomIssue>> appRoutes, List<CustomIssue> dns, List<CustomIssue> ntp
 });
 
 
@@ -2585,11 +2943,12 @@ class _$CustomProfileIssuesCopyWithImpl<$Res>
 
 /// Create a copy of CustomProfileIssues
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? proxyGroups = null,Object? rules = null,Object? dialers = null,Object? dns = null,Object? ntp = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? proxyGroups = null,Object? rules = null,Object? dialers = null,Object? appRoutes = null,Object? dns = null,Object? ntp = null,}) {
   return _then(CustomProfileIssues(
 proxyGroups: null == proxyGroups ? _self.proxyGroups : proxyGroups // ignore: cast_nullable_to_non_nullable
 as Map<int, List<CustomIssue>>,rules: null == rules ? _self.rules : rules // ignore: cast_nullable_to_non_nullable
 as Map<int, List<CustomIssue>>,dialers: null == dialers ? _self.dialers : dialers // ignore: cast_nullable_to_non_nullable
+as Map<int, List<CustomIssue>>,appRoutes: null == appRoutes ? _self.appRoutes : appRoutes // ignore: cast_nullable_to_non_nullable
 as Map<int, List<CustomIssue>>,dns: null == dns ? _self.dns : dns // ignore: cast_nullable_to_non_nullable
 as List<CustomIssue>,ntp: null == ntp ? _self.ntp : ntp // ignore: cast_nullable_to_non_nullable
 as List<CustomIssue>,
@@ -2677,10 +3036,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<int, List<CustomIssue>> proxyGroups,  Map<int, List<CustomIssue>> rules,  Map<int, List<CustomIssue>> dialers,  List<CustomIssue> dns,  List<CustomIssue> ntp)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( Map<int, List<CustomIssue>> proxyGroups,  Map<int, List<CustomIssue>> rules,  Map<int, List<CustomIssue>> dialers,  Map<int, List<CustomIssue>> appRoutes,  List<CustomIssue> dns,  List<CustomIssue> ntp)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CustomProfileIssues() when $default != null:
-return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.dns,_that.ntp);case _:
+return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.appRoutes,_that.dns,_that.ntp);case _:
   return orElse();
 
 }
@@ -2698,10 +3057,10 @@ return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.dns,_that.ntp)
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<int, List<CustomIssue>> proxyGroups,  Map<int, List<CustomIssue>> rules,  Map<int, List<CustomIssue>> dialers,  List<CustomIssue> dns,  List<CustomIssue> ntp)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( Map<int, List<CustomIssue>> proxyGroups,  Map<int, List<CustomIssue>> rules,  Map<int, List<CustomIssue>> dialers,  Map<int, List<CustomIssue>> appRoutes,  List<CustomIssue> dns,  List<CustomIssue> ntp)  $default,) {final _that = this;
 switch (_that) {
 case _CustomProfileIssues():
-return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.dns,_that.ntp);case _:
+return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.appRoutes,_that.dns,_that.ntp);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -2718,10 +3077,10 @@ return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.dns,_that.ntp)
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<int, List<CustomIssue>> proxyGroups,  Map<int, List<CustomIssue>> rules,  Map<int, List<CustomIssue>> dialers,  List<CustomIssue> dns,  List<CustomIssue> ntp)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( Map<int, List<CustomIssue>> proxyGroups,  Map<int, List<CustomIssue>> rules,  Map<int, List<CustomIssue>> dialers,  Map<int, List<CustomIssue>> appRoutes,  List<CustomIssue> dns,  List<CustomIssue> ntp)?  $default,) {final _that = this;
 switch (_that) {
 case _CustomProfileIssues() when $default != null:
-return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.dns,_that.ntp);case _:
+return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.appRoutes,_that.dns,_that.ntp);case _:
   return null;
 
 }
@@ -2733,7 +3092,7 @@ return $default(_that.proxyGroups,_that.rules,_that.dialers,_that.dns,_that.ntp)
 
 
 class _CustomProfileIssues implements CustomProfileIssues {
-  const _CustomProfileIssues({ Map<int, List<CustomIssue>> proxyGroups = const {},  Map<int, List<CustomIssue>> rules = const {},  Map<int, List<CustomIssue>> dialers = const {},  List<CustomIssue> dns = const [],  List<CustomIssue> ntp = const []}): _proxyGroups = proxyGroups,_rules = rules,_dialers = dialers,_dns = dns,_ntp = ntp;
+  const _CustomProfileIssues({ Map<int, List<CustomIssue>> proxyGroups = const {},  Map<int, List<CustomIssue>> rules = const {},  Map<int, List<CustomIssue>> dialers = const {},  Map<int, List<CustomIssue>> appRoutes = const {},  List<CustomIssue> dns = const [],  List<CustomIssue> ntp = const []}): _proxyGroups = proxyGroups,_rules = rules,_dialers = dialers,_appRoutes = appRoutes,_dns = dns,_ntp = ntp;
   
 
  final  Map<int, List<CustomIssue>> _proxyGroups;
@@ -2755,6 +3114,13 @@ class _CustomProfileIssues implements CustomProfileIssues {
   if (_dialers is EqualUnmodifiableMapView) return _dialers;
   // ignore: implicit_dynamic_type
   return EqualUnmodifiableMapView(_dialers);
+}
+
+ final  Map<int, List<CustomIssue>> _appRoutes;
+@override@JsonKey() Map<int, List<CustomIssue>> get appRoutes {
+  if (_appRoutes is EqualUnmodifiableMapView) return _appRoutes;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableMapView(_appRoutes);
 }
 
  final  List<CustomIssue> _dns;
@@ -2782,18 +3148,18 @@ _$CustomProfileIssuesCopyWith<_CustomProfileIssues> get copyWith => __$CustomPro
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomProfileIssues&&const DeepCollectionEquality().equals(other.proxyGroups, _proxyGroups)&&const DeepCollectionEquality().equals(other.rules, _rules)&&const DeepCollectionEquality().equals(other.dialers, _dialers)&&const DeepCollectionEquality().equals(other.dns, _dns)&&const DeepCollectionEquality().equals(other.ntp, _ntp));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomProfileIssues&&const DeepCollectionEquality().equals(other.proxyGroups, _proxyGroups)&&const DeepCollectionEquality().equals(other.rules, _rules)&&const DeepCollectionEquality().equals(other.dialers, _dialers)&&const DeepCollectionEquality().equals(other.appRoutes, _appRoutes)&&const DeepCollectionEquality().equals(other.dns, _dns)&&const DeepCollectionEquality().equals(other.ntp, _ntp));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_proxyGroups),const DeepCollectionEquality().hash(_rules),const DeepCollectionEquality().hash(_dialers),const DeepCollectionEquality().hash(_dns),const DeepCollectionEquality().hash(_ntp));
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_proxyGroups),const DeepCollectionEquality().hash(_rules),const DeepCollectionEquality().hash(_dialers),const DeepCollectionEquality().hash(_appRoutes),const DeepCollectionEquality().hash(_dns),const DeepCollectionEquality().hash(_ntp));
 }
 
 @override
 String toString() {
-    return 'CustomProfileIssues(proxyGroups: $proxyGroups, rules: $rules, dialers: $dialers, dns: $dns, ntp: $ntp)';
+    return 'CustomProfileIssues(proxyGroups: $proxyGroups, rules: $rules, dialers: $dialers, appRoutes: $appRoutes, dns: $dns, ntp: $ntp)';
 }
 
 
@@ -2804,7 +3170,7 @@ abstract mixin class _$CustomProfileIssuesCopyWith<$Res> implements $CustomProfi
   factory _$CustomProfileIssuesCopyWith(_CustomProfileIssues value, $Res Function(_CustomProfileIssues) _then) = __$CustomProfileIssuesCopyWithImpl;
 @override @useResult
 $Res call({
- Map<int, List<CustomIssue>> proxyGroups, Map<int, List<CustomIssue>> rules, Map<int, List<CustomIssue>> dialers, List<CustomIssue> dns, List<CustomIssue> ntp
+ Map<int, List<CustomIssue>> proxyGroups, Map<int, List<CustomIssue>> rules, Map<int, List<CustomIssue>> dialers, Map<int, List<CustomIssue>> appRoutes, List<CustomIssue> dns, List<CustomIssue> ntp
 });
 
 
@@ -2821,11 +3187,12 @@ class __$CustomProfileIssuesCopyWithImpl<$Res>
 
 /// Create a copy of CustomProfileIssues
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? proxyGroups = null,Object? rules = null,Object? dialers = null,Object? dns = null,Object? ntp = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? proxyGroups = null,Object? rules = null,Object? dialers = null,Object? appRoutes = null,Object? dns = null,Object? ntp = null,}) {
   return _then(_CustomProfileIssues(
 proxyGroups: null == proxyGroups ? _self._proxyGroups : proxyGroups // ignore: cast_nullable_to_non_nullable
 as Map<int, List<CustomIssue>>,rules: null == rules ? _self._rules : rules // ignore: cast_nullable_to_non_nullable
 as Map<int, List<CustomIssue>>,dialers: null == dialers ? _self._dialers : dialers // ignore: cast_nullable_to_non_nullable
+as Map<int, List<CustomIssue>>,appRoutes: null == appRoutes ? _self._appRoutes : appRoutes // ignore: cast_nullable_to_non_nullable
 as Map<int, List<CustomIssue>>,dns: null == dns ? _self._dns : dns // ignore: cast_nullable_to_non_nullable
 as List<CustomIssue>,ntp: null == ntp ? _self._ntp : ntp // ignore: cast_nullable_to_non_nullable
 as List<CustomIssue>,
@@ -2838,7 +3205,7 @@ as List<CustomIssue>,
 /// @nodoc
 mixin _$CustomProfileData {
 
- List<ProxyGroup> get proxyGroups; Set<String> get proxyProviders; Set<String> get ruleProviders; Set<String> get ruleTargets; Set<String> get proxies; Map<String, String> get dialers;
+ List<ProxyGroup> get proxyGroups; Set<String> get proxyProviders; Set<String> get ruleProviders; Set<String> get ruleTargets; Set<String> get proxies; Map<String, String> get dialers; List<AppRoute> get appRoutes;
 /// Create a copy of CustomProfileData
 /// with the given fields replaced by the non-null parameter values.
 @JsonKey(includeFromJson: false, includeToJson: false)
@@ -2850,20 +3217,20 @@ $CustomProfileDataCopyWith<CustomProfileData> get copyWith => _$CustomProfileDat
 @override
 bool operator ==(Object other) {
   final _this = this as CustomProfileData;
-  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomProfileData&&const DeepCollectionEquality().equals(other.proxyGroups, _this.proxyGroups)&&const DeepCollectionEquality().equals(other.proxyProviders, _this.proxyProviders)&&const DeepCollectionEquality().equals(other.ruleProviders, _this.ruleProviders)&&const DeepCollectionEquality().equals(other.ruleTargets, _this.ruleTargets)&&const DeepCollectionEquality().equals(other.proxies, _this.proxies)&&const DeepCollectionEquality().equals(other.dialers, _this.dialers));
+  return identical(this, other) || (other.runtimeType == runtimeType&&other is CustomProfileData&&const DeepCollectionEquality().equals(other.proxyGroups, _this.proxyGroups)&&const DeepCollectionEquality().equals(other.proxyProviders, _this.proxyProviders)&&const DeepCollectionEquality().equals(other.ruleProviders, _this.ruleProviders)&&const DeepCollectionEquality().equals(other.ruleTargets, _this.ruleTargets)&&const DeepCollectionEquality().equals(other.proxies, _this.proxies)&&const DeepCollectionEquality().equals(other.dialers, _this.dialers)&&const DeepCollectionEquality().equals(other.appRoutes, _this.appRoutes));
 }
 
 
 @override
 int get hashCode {
   final _this = this as CustomProfileData;
-  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.proxyGroups),const DeepCollectionEquality().hash(_this.proxyProviders),const DeepCollectionEquality().hash(_this.ruleProviders),const DeepCollectionEquality().hash(_this.ruleTargets),const DeepCollectionEquality().hash(_this.proxies),const DeepCollectionEquality().hash(_this.dialers));
+  return Object.hash(runtimeType,const DeepCollectionEquality().hash(_this.proxyGroups),const DeepCollectionEquality().hash(_this.proxyProviders),const DeepCollectionEquality().hash(_this.ruleProviders),const DeepCollectionEquality().hash(_this.ruleTargets),const DeepCollectionEquality().hash(_this.proxies),const DeepCollectionEquality().hash(_this.dialers),const DeepCollectionEquality().hash(_this.appRoutes));
 }
 
 @override
 String toString() {
   final _this = this as CustomProfileData;
-  return 'CustomProfileData(proxyGroups: ${_this.proxyGroups}, proxyProviders: ${_this.proxyProviders}, ruleProviders: ${_this.ruleProviders}, ruleTargets: ${_this.ruleTargets}, proxies: ${_this.proxies}, dialers: ${_this.dialers})';
+  return 'CustomProfileData(proxyGroups: ${_this.proxyGroups}, proxyProviders: ${_this.proxyProviders}, ruleProviders: ${_this.ruleProviders}, ruleTargets: ${_this.ruleTargets}, proxies: ${_this.proxies}, dialers: ${_this.dialers}, appRoutes: ${_this.appRoutes})';
 }
 
 
@@ -2874,7 +3241,7 @@ abstract mixin class $CustomProfileDataCopyWith<$Res>  {
   factory $CustomProfileDataCopyWith(CustomProfileData value, $Res Function(CustomProfileData) _then) = _$CustomProfileDataCopyWithImpl;
 @useResult
 $Res call({
- List<ProxyGroup> proxyGroups, Set<String> proxyProviders, Set<String> ruleProviders, Set<String> ruleTargets, Set<String> proxies, Map<String, String> dialers
+ List<ProxyGroup> proxyGroups, Set<String> proxyProviders, Set<String> ruleProviders, Set<String> ruleTargets, Set<String> proxies, Map<String, String> dialers, List<AppRoute> appRoutes
 });
 
 
@@ -2891,7 +3258,7 @@ class _$CustomProfileDataCopyWithImpl<$Res>
 
 /// Create a copy of CustomProfileData
 /// with the given fields replaced by the non-null parameter values.
-@pragma('vm:prefer-inline') @override $Res call({Object? proxyGroups = null,Object? proxyProviders = null,Object? ruleProviders = null,Object? ruleTargets = null,Object? proxies = null,Object? dialers = null,}) {
+@pragma('vm:prefer-inline') @override $Res call({Object? proxyGroups = null,Object? proxyProviders = null,Object? ruleProviders = null,Object? ruleTargets = null,Object? proxies = null,Object? dialers = null,Object? appRoutes = null,}) {
   return _then(CustomProfileData(
 proxyGroups: null == proxyGroups ? _self.proxyGroups : proxyGroups // ignore: cast_nullable_to_non_nullable
 as List<ProxyGroup>,proxyProviders: null == proxyProviders ? _self.proxyProviders : proxyProviders // ignore: cast_nullable_to_non_nullable
@@ -2899,7 +3266,8 @@ as Set<String>,ruleProviders: null == ruleProviders ? _self.ruleProviders : rule
 as Set<String>,ruleTargets: null == ruleTargets ? _self.ruleTargets : ruleTargets // ignore: cast_nullable_to_non_nullable
 as Set<String>,proxies: null == proxies ? _self.proxies : proxies // ignore: cast_nullable_to_non_nullable
 as Set<String>,dialers: null == dialers ? _self.dialers : dialers // ignore: cast_nullable_to_non_nullable
-as Map<String, String>,
+as Map<String, String>,appRoutes: null == appRoutes ? _self.appRoutes : appRoutes // ignore: cast_nullable_to_non_nullable
+as List<AppRoute>,
   ));
 }
 
@@ -2984,10 +3352,10 @@ return $default(_that);case _:
 /// }
 /// ```
 
-@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ProxyGroup> proxyGroups,  Set<String> proxyProviders,  Set<String> ruleProviders,  Set<String> ruleTargets,  Set<String> proxies,  Map<String, String> dialers)?  $default,{required TResult orElse(),}) {final _that = this;
+@optionalTypeArgs TResult maybeWhen<TResult extends Object?>(TResult Function( List<ProxyGroup> proxyGroups,  Set<String> proxyProviders,  Set<String> ruleProviders,  Set<String> ruleTargets,  Set<String> proxies,  Map<String, String> dialers,  List<AppRoute> appRoutes)?  $default,{required TResult orElse(),}) {final _that = this;
 switch (_that) {
 case _CustomProfileData() when $default != null:
-return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that.ruleTargets,_that.proxies,_that.dialers);case _:
+return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that.ruleTargets,_that.proxies,_that.dialers,_that.appRoutes);case _:
   return orElse();
 
 }
@@ -3005,10 +3373,10 @@ return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ProxyGroup> proxyGroups,  Set<String> proxyProviders,  Set<String> ruleProviders,  Set<String> ruleTargets,  Set<String> proxies,  Map<String, String> dialers)  $default,) {final _that = this;
+@optionalTypeArgs TResult when<TResult extends Object?>(TResult Function( List<ProxyGroup> proxyGroups,  Set<String> proxyProviders,  Set<String> ruleProviders,  Set<String> ruleTargets,  Set<String> proxies,  Map<String, String> dialers,  List<AppRoute> appRoutes)  $default,) {final _that = this;
 switch (_that) {
 case _CustomProfileData():
-return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that.ruleTargets,_that.proxies,_that.dialers);case _:
+return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that.ruleTargets,_that.proxies,_that.dialers,_that.appRoutes);case _:
   throw StateError('Unexpected subclass');
 
 }
@@ -3025,10 +3393,10 @@ return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that
 /// }
 /// ```
 
-@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ProxyGroup> proxyGroups,  Set<String> proxyProviders,  Set<String> ruleProviders,  Set<String> ruleTargets,  Set<String> proxies,  Map<String, String> dialers)?  $default,) {final _that = this;
+@optionalTypeArgs TResult? whenOrNull<TResult extends Object?>(TResult? Function( List<ProxyGroup> proxyGroups,  Set<String> proxyProviders,  Set<String> ruleProviders,  Set<String> ruleTargets,  Set<String> proxies,  Map<String, String> dialers,  List<AppRoute> appRoutes)?  $default,) {final _that = this;
 switch (_that) {
 case _CustomProfileData() when $default != null:
-return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that.ruleTargets,_that.proxies,_that.dialers);case _:
+return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that.ruleTargets,_that.proxies,_that.dialers,_that.appRoutes);case _:
   return null;
 
 }
@@ -3040,7 +3408,7 @@ return $default(_that.proxyGroups,_that.proxyProviders,_that.ruleProviders,_that
 
 
 class _CustomProfileData implements CustomProfileData {
-  const _CustomProfileData({ List<ProxyGroup> proxyGroups = const [],  Set<String> proxyProviders = const {},  Set<String> ruleProviders = const {},  Set<String> ruleTargets = const {},  Set<String> proxies = const {},  Map<String, String> dialers = const {}}): _proxyGroups = proxyGroups,_proxyProviders = proxyProviders,_ruleProviders = ruleProviders,_ruleTargets = ruleTargets,_proxies = proxies,_dialers = dialers;
+  const _CustomProfileData({ List<ProxyGroup> proxyGroups = const [],  Set<String> proxyProviders = const {},  Set<String> ruleProviders = const {},  Set<String> ruleTargets = const {},  Set<String> proxies = const {},  Map<String, String> dialers = const {},  List<AppRoute> appRoutes = const []}): _proxyGroups = proxyGroups,_proxyProviders = proxyProviders,_ruleProviders = ruleProviders,_ruleTargets = ruleTargets,_proxies = proxies,_dialers = dialers,_appRoutes = appRoutes;
   
 
  final  List<ProxyGroup> _proxyGroups;
@@ -3085,6 +3453,13 @@ class _CustomProfileData implements CustomProfileData {
   return EqualUnmodifiableMapView(_dialers);
 }
 
+ final  List<AppRoute> _appRoutes;
+@override@JsonKey() List<AppRoute> get appRoutes {
+  if (_appRoutes is EqualUnmodifiableListView) return _appRoutes;
+  // ignore: implicit_dynamic_type
+  return EqualUnmodifiableListView(_appRoutes);
+}
+
 
 /// Create a copy of CustomProfileData
 /// with the given fields replaced by the non-null parameter values.
@@ -3096,18 +3471,18 @@ _$CustomProfileDataCopyWith<_CustomProfileData> get copyWith => __$CustomProfile
 
 @override
 bool operator ==(Object other) {
-    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomProfileData&&const DeepCollectionEquality().equals(other.proxyGroups, _proxyGroups)&&const DeepCollectionEquality().equals(other.proxyProviders, _proxyProviders)&&const DeepCollectionEquality().equals(other.ruleProviders, _ruleProviders)&&const DeepCollectionEquality().equals(other.ruleTargets, _ruleTargets)&&const DeepCollectionEquality().equals(other.proxies, _proxies)&&const DeepCollectionEquality().equals(other.dialers, _dialers));
+    return identical(this, other) || (other.runtimeType == runtimeType&&other is _CustomProfileData&&const DeepCollectionEquality().equals(other.proxyGroups, _proxyGroups)&&const DeepCollectionEquality().equals(other.proxyProviders, _proxyProviders)&&const DeepCollectionEquality().equals(other.ruleProviders, _ruleProviders)&&const DeepCollectionEquality().equals(other.ruleTargets, _ruleTargets)&&const DeepCollectionEquality().equals(other.proxies, _proxies)&&const DeepCollectionEquality().equals(other.dialers, _dialers)&&const DeepCollectionEquality().equals(other.appRoutes, _appRoutes));
 }
 
 
 @override
 int get hashCode {
-    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_proxyGroups),const DeepCollectionEquality().hash(_proxyProviders),const DeepCollectionEquality().hash(_ruleProviders),const DeepCollectionEquality().hash(_ruleTargets),const DeepCollectionEquality().hash(_proxies),const DeepCollectionEquality().hash(_dialers));
+    return Object.hash(runtimeType,const DeepCollectionEquality().hash(_proxyGroups),const DeepCollectionEquality().hash(_proxyProviders),const DeepCollectionEquality().hash(_ruleProviders),const DeepCollectionEquality().hash(_ruleTargets),const DeepCollectionEquality().hash(_proxies),const DeepCollectionEquality().hash(_dialers),const DeepCollectionEquality().hash(_appRoutes));
 }
 
 @override
 String toString() {
-    return 'CustomProfileData(proxyGroups: $proxyGroups, proxyProviders: $proxyProviders, ruleProviders: $ruleProviders, ruleTargets: $ruleTargets, proxies: $proxies, dialers: $dialers)';
+    return 'CustomProfileData(proxyGroups: $proxyGroups, proxyProviders: $proxyProviders, ruleProviders: $ruleProviders, ruleTargets: $ruleTargets, proxies: $proxies, dialers: $dialers, appRoutes: $appRoutes)';
 }
 
 
@@ -3118,7 +3493,7 @@ abstract mixin class _$CustomProfileDataCopyWith<$Res> implements $CustomProfile
   factory _$CustomProfileDataCopyWith(_CustomProfileData value, $Res Function(_CustomProfileData) _then) = __$CustomProfileDataCopyWithImpl;
 @override @useResult
 $Res call({
- List<ProxyGroup> proxyGroups, Set<String> proxyProviders, Set<String> ruleProviders, Set<String> ruleTargets, Set<String> proxies, Map<String, String> dialers
+ List<ProxyGroup> proxyGroups, Set<String> proxyProviders, Set<String> ruleProviders, Set<String> ruleTargets, Set<String> proxies, Map<String, String> dialers, List<AppRoute> appRoutes
 });
 
 
@@ -3135,7 +3510,7 @@ class __$CustomProfileDataCopyWithImpl<$Res>
 
 /// Create a copy of CustomProfileData
 /// with the given fields replaced by the non-null parameter values.
-@override @pragma('vm:prefer-inline') $Res call({Object? proxyGroups = null,Object? proxyProviders = null,Object? ruleProviders = null,Object? ruleTargets = null,Object? proxies = null,Object? dialers = null,}) {
+@override @pragma('vm:prefer-inline') $Res call({Object? proxyGroups = null,Object? proxyProviders = null,Object? ruleProviders = null,Object? ruleTargets = null,Object? proxies = null,Object? dialers = null,Object? appRoutes = null,}) {
   return _then(_CustomProfileData(
 proxyGroups: null == proxyGroups ? _self._proxyGroups : proxyGroups // ignore: cast_nullable_to_non_nullable
 as List<ProxyGroup>,proxyProviders: null == proxyProviders ? _self._proxyProviders : proxyProviders // ignore: cast_nullable_to_non_nullable
@@ -3143,7 +3518,8 @@ as Set<String>,ruleProviders: null == ruleProviders ? _self._ruleProviders : rul
 as Set<String>,ruleTargets: null == ruleTargets ? _self._ruleTargets : ruleTargets // ignore: cast_nullable_to_non_nullable
 as Set<String>,proxies: null == proxies ? _self._proxies : proxies // ignore: cast_nullable_to_non_nullable
 as Set<String>,dialers: null == dialers ? _self._dialers : dialers // ignore: cast_nullable_to_non_nullable
-as Map<String, String>,
+as Map<String, String>,appRoutes: null == appRoutes ? _self._appRoutes : appRoutes // ignore: cast_nullable_to_non_nullable
+as List<AppRoute>,
   ));
 }
 
