@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:fl_clash/common/constant.dart';
 import 'package:fl_clash/common/migration.dart';
+import 'package:fl_clash/common/system.dart';
 import 'package:fl_clash/enum/enum.dart';
 import 'package:fl_clash/models/models.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -306,7 +307,7 @@ void main() {
         expect(await upgrade(4), isTrue);
       });
 
-      test('a new install only records it', () async {
+      test('a new install sets the defaults the desktop needs', () async {
         final store = _FakeMigrationStore(
           configMap: null,
           version: 0,
@@ -316,11 +317,41 @@ void main() {
         final config = await Migration(store: store).run();
 
         expect(config.themeProps, defaultThemeProps);
+        // App routes need the process a connection came from, which only the
+        // TUN names on a desktop.
+        expect(config.patchClashConfig.tun.enable, system.isDesktop);
         expect(store.upgradeVersion, Migration.upgradeVersion);
         expect(
           store.events.where((event) => event == 'saveConfig'),
           hasLength(1),
         );
+      });
+
+      test('turns the TUN on for an install that already ran', () async {
+        final store = _FakeMigrationStore(
+          configMap: _createConfigMap(),
+          version: Migration.currentVersion,
+          upgradeVersion: 4,
+        );
+
+        final config = await Migration(store: store).run();
+
+        expect(config.patchClashConfig.tun.enable, system.isDesktop);
+      });
+
+      test('leaves a TUN the user turned off alone afterwards', () async {
+        final configMap = _createConfigMap();
+        (configMap['patchClashConfig']! as Map<String, Object?>)
+            .putIfAbsent('tun', () => <String, Object?>{})['enable'] = false;
+        final store = _FakeMigrationStore(
+          configMap: configMap,
+          version: Migration.currentVersion,
+          upgradeVersion: Migration.upgradeVersion,
+        );
+
+        final config = await Migration(store: store).run();
+
+        expect(config.patchClashConfig.tun.enable, isFalse);
       });
 
       test('waits for the next launch when saving fails', () async {

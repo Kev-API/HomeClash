@@ -5,6 +5,7 @@ import 'package:fl_clash/models/models.dart';
 import 'package:prism_ui/color.dart';
 
 import 'preferences.dart';
+import 'system.dart';
 import 'task.dart';
 
 typedef MigrationTransform =
@@ -91,13 +92,18 @@ class Migration {
 
   /// One-off setting changes for upgrades, apart from [currentVersion], which
   /// backups carry and an older app refuses when it is newer than its own.
-  static const upgradeVersion = 4;
+  static const upgradeVersion = 5;
+
+  /// Steps that set a default rather than repair an old one, so a fresh
+  /// install runs them as well.
+  static const _runsOnFirstLaunch = {5};
 
   static const Map<int, Config Function(Config config)> _upgrades = {
     1: _resetThemeColors,
     2: _keepGlassLook,
     3: _followSystemColors,
     4: _turnOffSidebarBlur,
+    5: _turnOnTunOnDesktop,
   };
 
   Future<Config> run() async {
@@ -112,8 +118,10 @@ class Migration {
       return config;
     }
     var upgraded = config;
-    if (installed) {
-      for (var version = from + 1; version <= upgradeVersion; version++) {
+    for (var version = from + 1; version <= upgradeVersion; version++) {
+      // A first launch runs the steps that set a product default too, so a new
+      // user gets the same starting state as an upgraded one.
+      if (installed || _runsOnFirstLaunch.contains(version)) {
         upgraded = _upgrades[version]!(upgraded);
       }
     }
@@ -237,6 +245,27 @@ Config _followSystemColors(Config config) {
 // Releases stored sidebar blur on while its switch stayed hidden.
 Config _turnOffSidebarBlur(Config config) =>
     config.copyWith(themeProps: config.themeProps.copyWith(sidebarBlur: false));
+
+/// An app route reads which process opened a connection, and only the TUN
+/// carries that reliably on a desktop: through the system proxy the core has to
+/// ask the OS, which cannot always name the process — a reused connection or a
+/// multiplexed one loses it. HomeClash is built around app routes, so a desktop
+/// starts with the TUN on rather than leaving the feature silently dead.
+///
+/// Only the default changes: a user who turns it off keeps it off, since this
+/// step runs once.
+Config _turnOnTunOnDesktop(Config config) {
+  if (!system.isDesktop) {
+    return config;
+  }
+  final patch = config.patchClashConfig;
+  if (patch.tun.enable) {
+    return config;
+  }
+  return config.copyWith(
+    patchClashConfig: patch.copyWith(tun: patch.tun.copyWith(enable: true)),
+  );
+}
 
 bool _isV0(Map<String, Object?>? configMap) =>
     configMap?['proxiesStyle'] != null;
